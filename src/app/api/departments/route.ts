@@ -53,6 +53,9 @@ export async function POST(request: Request) {
     return NextResponse.json(department, { status: 201 });
   } catch (error) {
     console.error("Error creating department:", error);
+    if ((error as { code?: string })?.code === "P2002") {
+      return NextResponse.json({ error: "Mã khoa/phòng đã tồn tại" }, { status: 409 });
+    }
     return NextResponse.json({ error: "Failed to create department" }, { status: 500 });
   }
 }

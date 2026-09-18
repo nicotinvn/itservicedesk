@@ -134,7 +134,8 @@ export default function ManagementPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newDeptData),
       });
-      if (!res.ok) throw new Error("Create dept failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Create dept failed");
       showToast("Thành công", `Đã thêm khoa phòng ${newDeptData.name}`);
       setShowAddModal(false);
       setNewDeptData({
@@ -149,8 +150,8 @@ export default function ManagementPage() {
         staffCount: 15,
       });
       fetchData();
-    } catch (e) {
-      showToast("Lỗi", "Không thể thêm khoa phòng mới", "error");
+    } catch (e: any) {
+      showToast("Lỗi", e.message || "Không thể thêm khoa phòng mới", "error");
     }
   };
 
