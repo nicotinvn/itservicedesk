@@ -66,7 +66,7 @@ export default function TicketDetailPage() {
       const parsed = JSON.parse(value);
       return Array.isArray(parsed) ? parsed : [];
     } catch {
-      return [];
+      return value.trim() ? [value.trim()] : [];
     }
   };
 
