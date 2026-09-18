@@ -83,6 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const switchUser = (username: string) => {
+    if (process.env.NEXT_PUBLIC_DEMO_MODE === "false") return;
     const found = findAuthUserByUsername(username);
     if (found) {
       persistUser(found);
@@ -130,6 +131,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     persistUser(null);
+    void fetch("/api/auth/logout", { method: "POST" }).catch(() => undefined);
     if (typeof window !== "undefined") {
       window.location.replace("/");
     }

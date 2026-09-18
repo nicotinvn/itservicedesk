@@ -60,6 +60,25 @@ npm run build
 npm run start
 ```
 
+### 4. Triển khai production trên Vercel
+
+Production sử dụng PostgreSQL, không sử dụng SQLite local. Sao chép `.env.example` thành `.env` và điền `DATABASE_URL`, sau đó chuẩn bị schema trên database production:
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+Tạo tài khoản quản trị production bằng các biến `PRODUCTION_ADMIN_USERNAME`, `PRODUCTION_ADMIN_EMAIL` và `PRODUCTION_ADMIN_PASSWORD` (tối thiểu 12 ký tự), rồi chạy:
+
+```bash
+npm run db:seed:production
+```
+
+Không chạy `npm run db:seed` trên production. Seed demo có tính phá hủy dữ liệu và chỉ chạy khi đặt rõ `ALLOW_DEMO_SEED=true` ở môi trường local.
+
+Trên Vercel, thêm các biến môi trường trong Project Settings trước khi deploy. Ảnh upload production cần cấu hình Cloudinary; filesystem của Vercel không dùng để lưu ảnh lâu dài.
+
 ---
 
 ## 📁 Cấu Trúc Mã Nguồn

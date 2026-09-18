@@ -16,6 +16,7 @@ export interface AuthUser {
 export const AUTH_STORAGE_KEY = "itservicedesk_user";
 export const AUTH_COOKIE_KEY = "itservicedesk_user";
 export const AUTH_ROLE_COOKIE_KEY = "itservicedesk_role";
+export const AUTH_SESSION_COOKIE_KEY = "itservicedesk_session";
 
 export const PRESET_USERS: AuthUser[] = [
   {

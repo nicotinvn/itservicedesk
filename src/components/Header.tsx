@@ -25,6 +25,7 @@ export default function Header() {
   const [showRoleMenu, setShowRoleMenu] = useState(false);
   const [showNotiModal, setShowNotiModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const demoModeEnabled = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
 
   return (
     <>
@@ -109,7 +110,7 @@ export default function Header() {
                     Chọn vai trò để trải nghiệm:
                   </div>
                   <div className="p-1 space-y-1">
-                    {PRESET_USERS.map((user) => {
+                    {demoModeEnabled && PRESET_USERS.map((user) => {
                       const isSelected = user.username === activeUser.username;
                       return (
                         <button
@@ -143,6 +144,11 @@ export default function Header() {
                         </button>
                       );
                     })}
+                    {!demoModeEnabled && (
+                      <div className="px-3 py-2 text-xs text-on-surface-variant border-b">
+                        Chuyển vai trò demo đã tắt trên môi trường production.
+                      </div>
+                    )}
                     <div className="px-3 pt-2 border-t">
                       <button
                         onClick={() => {

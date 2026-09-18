@@ -24,6 +24,7 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("123456");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const demoModeEnabled = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -172,7 +173,7 @@ export default function LoginScreen() {
               </button>
             </div>
 
-            <div className="space-y-2 pt-1">
+            {demoModeEnabled && <div className="space-y-2 pt-1">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#434655]">Vai trò truy cập nhanh</span>
                 <span className="flex items-center gap-1 text-[11px] font-medium text-[#005e6e]">
@@ -199,7 +200,7 @@ export default function LoginScreen() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div>}
 
             {error ? (
               <div className="rounded-lg border border-[#ffdad6] bg-[#fff5f4] px-3 py-2 text-[12px] font-medium text-[#93000a]">

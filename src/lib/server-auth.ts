@@ -1,11 +1,60 @@
 import type { UserRole } from "@/lib/types";
-import { AUTH_COOKIE_KEY, AUTH_ROLE_COOKIE_KEY, findAuthUserByUsername } from "@/lib/auth-preset";
+import crypto from "crypto";
+import { AUTH_COOKIE_KEY, AUTH_ROLE_COOKIE_KEY, AUTH_SESSION_COOKIE_KEY, findAuthUserByUsername } from "@/lib/auth-preset";
 import { hasPermissionForRole, type PermissionAction } from "@/lib/permissions";
 import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
+
+function getSessionSecret() {
+  if (process.env.NODE_ENV === "production" && !process.env.AUTH_SECRET) {
+    throw new Error("AUTH_SECRET must be configured in production");
+  }
+  return process.env.AUTH_SECRET || "local-development-secret";
+}
+
+type SessionPayload = { id: string; username: string; role: UserRole; exp: number };
+
+function signSessionPayload(payload: SessionPayload) {
+  const encoded = Buffer.from(JSON.stringify(payload)).toString("base64url");
+  const signature = crypto.createHmac("sha256", getSessionSecret()).update(encoded).digest("base64url");
+  return `${encoded}.${signature}`;
+}
+
+function verifySessionToken(token: string): SessionPayload | null {
+  const [encoded, signature] = token.split(".");
+  if (!encoded || !signature) return null;
+  const expected = crypto.createHmac("sha256", getSessionSecret()).update(encoded).digest("base64url");
+  if (signature.length !== expected.length || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(encoded, "base64url").toString()) as SessionPayload;
+    return payload.exp > Date.now() ? payload : null;
+  } catch {
+    return null;
+  }
+}
+
+export function setAuthSession(response: NextResponse, user: { id: string; username: string; role: UserRole }) {
+  response.cookies.set(AUTH_SESSION_COOKIE_KEY, signSessionPayload({ ...user, exp: Date.now() + 86400000 }), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 86400,
+  });
+  return response;
+}
 
 export function getAuthUserFromRequest(request: Request) {
   const cookieHeader = request.headers.get("cookie") ?? "";
   const cookieParts = cookieHeader.split(";").map((part) => part.trim());
+  const sessionMatch = cookieParts.find((part) => part.startsWith(`${AUTH_SESSION_COOKIE_KEY}=`));
+  if (sessionMatch) {
+    const session = verifySessionToken(decodeURIComponent(sessionMatch.slice(`${AUTH_SESSION_COOKIE_KEY}=`.length)));
+    if (!session) return null;
+    return { id: session.id, username: session.username, fullName: session.username, email: session.username, role: session.role };
+  }
+
+  if (process.env.DEMO_MODE === "false") return null;
   const matched = cookieParts.find((part) => part.startsWith(`${AUTH_COOKIE_KEY}=`));
 
   if (!matched) return null;

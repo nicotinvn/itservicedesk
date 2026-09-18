@@ -3,6 +3,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+  if (process.env.NODE_ENV === "production" || process.env.ALLOW_DEMO_SEED !== "true") {
+    throw new Error(
+      "Demo seed is destructive. Set ALLOW_DEMO_SEED=true explicitly for local demo data only."
+    );
+  }
+
   console.log("🌱 Seeding ITServiceDesk database...");
 
   // 1. Clean existing data

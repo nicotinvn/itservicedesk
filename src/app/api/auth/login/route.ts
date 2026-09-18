@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
 import { findAuthUserByUsername } from "@/lib/auth-preset";
+import { setAuthSession } from "@/lib/server-auth";
 
 export async function POST(request: Request) {
   try {
@@ -13,14 +14,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Thiếu username hoặc password" }, { status: 400 });
     }
 
-    const presetUser = findAuthUserByUsername(username);
+    const presetUser = process.env.DEMO_MODE === "false" ? null : findAuthUserByUsername(username);
     if (presetUser) {
-      const validDefaultPassword = password === "123456" || password === presetUser.username;
+      const validDefaultPassword = process.env.DEMO_MODE !== "false" && (password === "123456" || password === presetUser.username);
       if (!validDefaultPassword) {
         return NextResponse.json({ error: "Sai mật khẩu" }, { status: 401 });
       }
 
-      return NextResponse.json({
+      return setAuthSession(NextResponse.json({
         id: presetUser.id,
         username: presetUser.username,
         fullName: presetUser.fullName,
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
         departmentName: presetUser.departmentName,
         specialty: presetUser.specialty,
         avatar: presetUser.avatar,
-      });
+      }), { id: presetUser.id, username: presetUser.username, role: presetUser.role });
     }
 
     const dbUser = await prisma.user.findFirst({
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
     }
 
     const hasPasswordHash = !!dbUser.passwordHash;
-    const validByDefault = password === "123456" || password === dbUser.username;
+    const validByDefault = process.env.DEMO_MODE !== "false" && (password === "123456" || password === dbUser.username);
     if (!hasPasswordHash && !validByDefault) {
       return NextResponse.json({ error: "Sai mật khẩu" }, { status: 401 });
     }
@@ -60,7 +61,7 @@ export async function POST(request: Request) {
       }
     }
 
-    return NextResponse.json({
+    return setAuthSession(NextResponse.json({
       id: dbUser.id,
       username: dbUser.username,
       fullName: dbUser.fullName,
@@ -71,7 +72,7 @@ export async function POST(request: Request) {
       departmentName: dbUser.department?.name ?? null,
       specialty: dbUser.specialty,
       avatar: dbUser.avatar,
-    });
+    }), { id: dbUser.id, username: dbUser.username, role: dbUser.role as any });
   } catch (error) {
     console.error("Login API error:", error);
     return NextResponse.json({ error: "Lỗi đăng nhập" }, { status: 500 });
