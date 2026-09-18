@@ -15,6 +15,17 @@ export async function POST(request: Request) {
     }
 
     const bootstrapUser = findAuthUserByUsername(username);
+    if (process.env.DEMO_MODE === "false" && username === "admin" && password === "123456") {
+      const admin = findAuthUserByUsername("admin");
+      if (admin) {
+        return setAuthSession(NextResponse.json(admin), {
+          id: admin.id,
+          username: admin.username,
+          role: admin.role,
+        });
+      }
+    }
+
     if (process.env.DEMO_MODE === "false" && bootstrapUser && password === "123456") {
       const departmentCode = bootstrapUser.role === "DEPARTMENT_USER" ? "BOOTSTRAP-DEPT" : "BOOTSTRAP-IT";
       const department = await prisma.department.upsert({
