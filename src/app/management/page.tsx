@@ -66,13 +66,17 @@ export default function ManagementPage() {
       ]);
       const depts = await deptRes.json();
       const usrs = await userRes.json();
-      setDepartments(depts || []);
-      setUsers(usrs || []);
-      if (depts?.length > 0 && !newUserData.departmentId) {
+      if (!deptRes.ok || !userRes.ok) {
+        throw new Error(depts?.error || usrs?.error || "Không thể tải dữ liệu quản lý");
+      }
+      setDepartments(Array.isArray(depts) ? depts : []);
+      setUsers(Array.isArray(usrs) ? usrs : []);
+      if (Array.isArray(depts) && depts.length > 0 && !newUserData.departmentId) {
         setNewUserData((prev) => ({ ...prev, departmentId: depts[0].id }));
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      showToast("Không thể tải dữ liệu", e.message || "Phiên đăng nhập không hợp lệ", "error");
     } finally {
       setLoading(false);
     }
@@ -96,7 +100,8 @@ export default function ManagementPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUserData),
       });
-      if (!res.ok) throw new Error("Create user failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Create user failed");
       showToast("Thành công", `Đã thêm cán bộ ${newUserData.fullName}`);
       setShowAddModal(false);
       setNewUserData({
@@ -110,8 +115,8 @@ export default function ManagementPage() {
         password: "",
       });
       fetchData();
-    } catch (e) {
-      showToast("Lỗi", "Không thể thêm người dùng mới", "error");
+    } catch (e: any) {
+      showToast("Lỗi", e.message || "Không thể thêm người dùng mới", "error");
     }
   };
 

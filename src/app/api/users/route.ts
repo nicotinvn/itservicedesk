@@ -58,7 +58,11 @@ export async function POST(request: Request) {
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
     console.error("Error creating user:", error);
-    return NextResponse.json({ error: "Failed to create user" }, { status: 500 });
+    const code = (error as { code?: string })?.code;
+    if (code === "P2002") {
+      return NextResponse.json({ error: "Username hoặc email đã tồn tại" }, { status: 409 });
+    }
+    return NextResponse.json({ error: "Không thể tạo tài khoản. Kiểm tra lại khoa/phòng và dữ liệu bắt buộc." }, { status: 500 });
   }
 }
 
