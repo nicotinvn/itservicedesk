@@ -3,13 +3,6 @@
 import React, { useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 
-const QUICK_ROLE_OPTIONS = [
-  { label: "Kỹ thuật viên", username: "minh.le", icon: "build", color: "bg-[#e9ecff] text-[#101a38]" },
-  { label: "Trưởng phòng", username: "nam.nguyen", icon: "monitoring", color: "bg-[#eef2ff] text-[#101a38]" },
-  { label: "Khoa / Phòng", username: "ha.tran", icon: "local_hospital", color: "bg-[#f2f4ff] text-[#101a38]" },
-  { label: "Quản trị", username: "admin", icon: "admin_panel_settings", color: "bg-[#fff3f0] text-[#8a1e1e]" },
-] as const;
-
 const BOTTOM_NAV_ITEMS = [
   { label: "Tổng quan", icon: "grid_view" },
   { label: "Yêu cầu", icon: "assignment" },
@@ -20,11 +13,10 @@ const BOTTOM_NAV_ITEMS = [
 
 export default function LoginScreen() {
   const { login } = useAuth();
-  const [username, setUsername] = useState("nam.nguyen");
-  const [password, setPassword] = useState("123456");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const demoModeEnabled = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -35,12 +27,6 @@ export default function LoginScreen() {
       setError("Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng thử lại.");
       return;
     }
-  };
-
-  const handleQuickRole = (item: (typeof QUICK_ROLE_OPTIONS)[number]) => {
-    setUsername(item.username);
-    setPassword("123456");
-    setError("");
   };
 
   return (
@@ -173,35 +159,6 @@ export default function LoginScreen() {
               </button>
             </div>
 
-            {demoModeEnabled && <div className="space-y-2 pt-1">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#434655]">Vai trò truy cập nhanh</span>
-                <span className="flex items-center gap-1 text-[11px] font-medium text-[#005e6e]">
-                  <span className="material-symbols-outlined text-[14px]">touch_app</span>
-                  Tự động điền
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
-                {QUICK_ROLE_OPTIONS.map((item) => (
-                  <button
-                    key={item.username}
-                    type="button"
-                    onClick={() => handleQuickRole(item)}
-                    className="flex items-start gap-2 rounded-lg bg-[#f2f3ff] p-2 text-left transition-all hover:bg-[#eaedff] active:scale-[0.99]"
-                  >
-                    <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md ${item.color}`}>
-                      <span className="material-symbols-outlined text-[16px]">{item.icon}</span>
-                    </div>
-                    <div className="min-w-0">
-                      <div className="truncate text-[11px] font-semibold text-[#131b2e]">{item.label}</div>
-                      <div className="truncate text-[10px] text-[#434655]">{item.username}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>}
-
             {error ? (
               <div className="rounded-lg border border-[#ffdad6] bg-[#fff5f4] px-3 py-2 text-[12px] font-medium text-[#93000a]">
                 {error}
@@ -260,7 +217,7 @@ export default function LoginScreen() {
           </span>
         </div>
 
-        <p className="mt-3 text-center text-[11px] text-[#434655]">© 2025 Trung tâm CNTT - Bệnh viện Đa khoa Trung ương.</p>
+        <p className="mt-3 text-center text-[11px] text-[#434655]">© 2025 Phòng CNTT - Bệnh viện Đa khoa tỉnh Thanh Hoá</p>
       </main>
 
       <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-[#e2e8f0] bg-[#faf8ff]/95 pb-[max(env(safe-area-inset-bottom),0px)] shadow-[0_-4px_16px_rgba(15,23,42,0.05)] backdrop-blur-xl">

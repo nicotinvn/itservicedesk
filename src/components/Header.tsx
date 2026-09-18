@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useAuth, PRESET_USERS } from "@/lib/auth-context";
+import { useAuth } from "@/lib/auth-context";
 import { useToast } from "@/components/Toast";
 import ChangePasswordModal from "@/components/ChangePasswordModal";
 import ProfileModal from "@/components/ProfileModal";
@@ -19,13 +19,14 @@ const DESKTOP_NAV_ITEMS: Array<{ label: string; href: string; permission: Permis
 ];
 
 export default function Header() {
-  const { currentUser, switchUser, logout, hasPermission } = useAuth();
+  const { currentUser, logout, hasPermission } = useAuth();
   const { showToast } = useToast();
-  const activeUser = currentUser ?? PRESET_USERS[0];
-  const [showRoleMenu, setShowRoleMenu] = useState(false);
   const [showNotiModal, setShowNotiModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const demoModeEnabled = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
+
+  if (!currentUser) return null;
+
+  const activeUser = currentUser;
 
   return (
     <>
@@ -70,16 +71,11 @@ export default function Header() {
             {/* Quick Role Switcher Button */}
             <div className="relative">
               <button
-                onClick={() => setShowRoleMenu(!showRoleMenu)}
+                onClick={() => setShowProfileModal(true)}
                 className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors border border-outline-variant/30 text-left"
-                title="Bấm để đổi vai trò thử nghiệm"
+                title="Mở hồ sơ cá nhân"
               >
                 <img
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setShowRoleMenu(false);
-                    setShowProfileModal(true);
-                  }}
                   src={activeUser.avatar || "https://lh3.googleusercontent.com/aida-public/AB6AXuBM133Vt-gxwZ9S4687hyK5kpyl7INMKz7ondjzHGx4RC0DAnldQgLOGLJe844sR4qNsiTw_90Fz-lsmkCJImjm5WxY9ROr1s8jpLS4i-N3x_qBQ_ebngGCDlo1J6kNeukvLTrDff_TgFwHhnWtQmcLjxEkb8P9OiZNmAvHgpq1UgDbaudCfwUqT_Ei2u6mg2S2AMUNs3Bk788fSp6AqlkYRWJ_yNIVXGnzErbAryaGdnCOMVg6eKyY"}
                   alt={activeUser.fullName}
                   className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 flex-shrink-0 cursor-pointer"
@@ -98,75 +94,8 @@ export default function Header() {
                       : "Quản trị hệ thống"}
                   </span>
                 </div>
-                <span className="material-symbols-outlined text-outline text-[18px]">
-                  swap_vert
-                </span>
+                <span className="material-symbols-outlined text-outline text-[18px]">account_circle</span>
               </button>
-
-              {/* Role Dropdown */}
-              {showRoleMenu && (
-                <div className="absolute right-0 mt-2 w-72 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/40 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-4 py-2 border-b border-surface-container text-xs text-on-surface-variant font-medium">
-                    Chọn vai trò để trải nghiệm:
-                  </div>
-                  <div className="p-1 space-y-1">
-                    {demoModeEnabled && PRESET_USERS.map((user) => {
-                      const isSelected = user.username === activeUser.username;
-                      return (
-                        <button
-                          key={user.username}
-                          onClick={() => {
-                            switchUser(user.username);
-                            setShowRoleMenu(false);
-                          }}
-                          className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-left transition-colors ${
-                            isSelected
-                              ? "bg-primary-fixed text-on-primary-fixed font-semibold"
-                              : "hover:bg-surface-container-low text-on-surface"
-                          }`}
-                        >
-                          <img
-                            src={user.avatar}
-                            alt={user.fullName}
-                            className="w-8 h-8 rounded-full object-cover flex-shrink-0 ring-1 ring-black/10"
-                          />
-                          <div className="flex flex-col min-w-0 flex-1">
-                            <span className="text-sm truncate">{user.fullName}</span>
-                            <span className="text-xs opacity-75 truncate">
-                              {user.specialty || user.departmentName}
-                            </span>
-                          </div>
-                          {isSelected && (
-                            <span className="material-symbols-outlined text-[18px] text-primary">
-                              check
-                            </span>
-                          )}
-                        </button>
-                      );
-                    })}
-                    {!demoModeEnabled && (
-                      <div className="px-3 py-2 text-xs text-on-surface-variant border-b">
-                        Chuyển vai trò demo đã tắt trên môi trường production.
-                      </div>
-                    )}
-                    <div className="px-3 pt-2 border-t">
-                      <button
-                        onClick={() => {
-                          // open change password modal via state
-                          setShowRoleMenu(false);
-                          // use custom event to open modal
-                          const ev = new CustomEvent('openChangePasswordModal');
-                          window.dispatchEvent(ev);
-                        }}
-                        className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-left text-xs hover:bg-surface-container-low"
-                      >
-                        <span className="material-symbols-outlined text-[16px]">vpn_key</span>
-                        <span>Đổi mật khẩu</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             <button

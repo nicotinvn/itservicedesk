@@ -1,13 +1,11 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const MAX_INLINE_FILE_SIZE = 2 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 
 const hasCloudinaryConfig = Boolean(
@@ -42,17 +40,6 @@ function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<string> {
 
 export async function POST(request: Request) {
   try {
-    if (process.env.NODE_ENV === "production" && !hasCloudinaryConfig) {
-      return NextResponse.json(
-        { error: "Image storage is not configured. Set the Cloudinary environment variables." },
-        { status: 503 }
-      );
-    }
-
-    if (!hasCloudinaryConfig) {
-      await fs.mkdir(UPLOAD_DIR, { recursive: true });
-    }
-
     const formData = await request.formData();
     const incomingFiles = formData.getAll("files").filter((item): item is File => item instanceof File);
 
@@ -71,15 +58,16 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: `File too large: ${file.name}` }, { status: 400 });
       }
 
-      const extension = path.extname(file.name) || ".jpg";
       const buffer = Buffer.from(await file.arrayBuffer());
       if (hasCloudinaryConfig) {
         uploadedUrls.push(await uploadToCloudinary(buffer, file.type));
+      } else if (buffer.length <= MAX_INLINE_FILE_SIZE) {
+        uploadedUrls.push(`data:${file.type};base64,${buffer.toString("base64")}`);
       } else {
-        const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}${extension}`;
-        const targetPath = path.join(UPLOAD_DIR, safeName);
-        await fs.writeFile(targetPath, buffer);
-        uploadedUrls.push(`/uploads/${safeName}`);
+        return NextResponse.json(
+          { error: "Ảnh quá lớn khi chưa cấu hình Cloudinary. Vui lòng chọn ảnh dưới 2 MB hoặc cấu hình Cloudinary." },
+          { status: 413 }
+        );
       }
     }
 
