@@ -75,6 +75,22 @@ Tạo tài khoản quản trị production bằng các biến `PRODUCTION_ADMIN_
 npm run db:seed:production
 ```
 
+Seed production cũng tạo sẵn các tài khoản test `admin`, `nam.nguyen`, `minh.le`, `ha.tran`, tất cả dùng mật khẩu tạm `123456`. Hãy đổi mật khẩu sau khi đăng nhập kiểm tra xong.
+
+Nếu máy local chưa có `DATABASE_URL`, có thể lấy biến production tạm thời bằng Vercel CLI (không commit file env):
+
+```bash
+npx vercel login
+npx vercel link --scope dungtrungphams-projects --project itservicedesk
+npx vercel env pull .env.production.local --environment=production
+Copy-Item .env.production.local .env
+npx prisma db push
+npm run db:seed:production
+Remove-Item .env, .env.production.local
+```
+
+Lệnh `vercel env pull` chỉ tải biến đã cấu hình trong Vercel về máy local; không cần nhập hoặc in secret database ra màn hình.
+
 Không chạy `npm run db:seed` trên production. Seed demo có tính phá hủy dữ liệu và chỉ chạy khi đặt rõ `ALLOW_DEMO_SEED=true` ở môi trường local.
 
 Trên Vercel, thêm các biến môi trường trong Project Settings trước khi deploy. Ảnh upload production cần cấu hình Cloudinary; filesystem của Vercel không dùng để lưu ảnh lâu dài.
