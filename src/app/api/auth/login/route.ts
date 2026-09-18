@@ -28,21 +28,29 @@ export async function POST(request: Request) {
         },
       });
       const passwordHash = await bcrypt.hash(password, 12);
-      await prisma.user.upsert({
-        where: { username: bootstrapUser.username },
-        update: { passwordHash, active: true, role: bootstrapUser.role, departmentId: department.id },
-        create: {
-          username: bootstrapUser.username,
-          fullName: bootstrapUser.fullName,
-          email: bootstrapUser.email,
-          phone: bootstrapUser.phone,
-          passwordHash,
-          role: bootstrapUser.role,
-          departmentId: department.id,
-          specialty: bootstrapUser.specialty,
-          active: true,
-        },
+      const existingBootstrapUser = await prisma.user.findFirst({
+        where: { OR: [{ username: bootstrapUser.username }, { email: bootstrapUser.email }] },
       });
+      if (existingBootstrapUser) {
+        await prisma.user.update({
+          where: { id: existingBootstrapUser.id },
+          data: { passwordHash, active: true, role: bootstrapUser.role, departmentId: department.id },
+        });
+      } else {
+        await prisma.user.create({
+          data: {
+            username: bootstrapUser.username,
+            fullName: bootstrapUser.fullName,
+            email: bootstrapUser.email,
+            phone: bootstrapUser.phone,
+            passwordHash,
+            role: bootstrapUser.role,
+            departmentId: department.id,
+            specialty: bootstrapUser.specialty,
+            active: true,
+          },
+        });
+      }
     }
 
     const presetUser = process.env.DEMO_MODE === "false" ? null : bootstrapUser;
