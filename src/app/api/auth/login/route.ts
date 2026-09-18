@@ -92,7 +92,7 @@ export async function POST(request: Request) {
     }
 
     const bootstrapUser = findAuthUserByUsername(username);
-    const shouldInitializePassword = bootstrapUser && password === "123456" && !dbUser.passwordHash;
+    const shouldInitializePassword = bootstrapUser && password === "123456";
     if (shouldInitializePassword) {
       const passwordHash = await bcrypt.hash(password, 12);
       const initializedUser = await prisma.user.update({
