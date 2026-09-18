@@ -79,6 +79,14 @@ Không chạy `npm run db:seed` trên production. Seed demo có tính phá hủy
 
 Trên Vercel, thêm các biến môi trường trong Project Settings trước khi deploy. Ảnh upload production cần cấu hình Cloudinary; filesystem của Vercel không dùng để lưu ảnh lâu dài.
 
+Để tạo dữ liệu test không xóa dữ liệu hiện có, cấu hình `DATABASE_URL` trong `.env` rồi chạy:
+
+```bash
+npm run db:seed:demo
+```
+
+Lệnh này tạo các tài khoản `demo.admin`, `demo.manager`, `demo.technician`, `demo.requester` với mật khẩu `123456`, cùng ba yêu cầu mẫu và dữ liệu phân công/đánh giá/CSAT.
+
 ---
 
 ## 📁 Cấu Trúc Mã Nguồn
