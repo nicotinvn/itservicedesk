@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Department {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  name        String
+  category    String   // CLINICAL, PARACLINICAL, ADMINISTRATIVE
+  building    String?  // Tòa A1, Tòa B...
+  floor       String?  // Tầng Trệt, Tầng 1...
+  room        String?  // P.102...
+  leaderName  String?  // Người phụ trách
+  phone       String?
+  staffCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  users       User[]
+  tickets     Ticket[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  username       String       @unique
+  fullName       String
+  email          String       @unique
+  phone          String?
+  avatar         String?
+  passwordHash   String?
+  role           String       // ADMIN, MANAGER, TECHNICIAN, DEPARTMENT_USER
+  departmentId   String?
+  department     Department?  @relation(fields: [departmentId], references: [id])
+  specialty      String?      // Chuyên sâu Mạng, HIS, PACS, Phần cứng...
+  active         Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+
+  createdTickets Ticket[]     @relation("TicketCreator")
+  assignedTasks  Assignment[] @relation("AssignedTo")
+  managedTasks   Assignment[] @relation("AssignedBy")
+  reports        TaskReport[]
+  evaluations    Evaluation[]
+}
+
+model Ticket {
+  id             String       @id @default(cuid())
+  ticketCode     String       @unique // YC2025060001
+  title          String
+  description    String
+  category       String       // COMPUTER, PRINTER, SOFTWARE, NETWORK, CAMERA, EMAIL, SERVER, SUPPORT, OTHER
+  priority       String       // CRITICAL, HIGH, MEDIUM, LOW
+  status         String       // PENDING_APPROVAL, REJECTED, APPROVED, IN_PROGRESS, PENDING_CONFIRMATION, COMPLETED, CLOSED
+  currentStep    Int          @default(1) // 1 to 7
+
+  departmentId   String
+  department     Department   @relation(fields: [departmentId], references: [id])
+  creatorId      String
+  creator        User         @relation("TicketCreator", fields: [creatorId], references: [id])
+  
+  requesterName  String?
+  requesterPhone String?
+  roomLocation   String?
+  images         String?      // JSON string array of image URLs
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  assignment     Assignment?
+  taskReport     TaskReport?
+  evaluation     Evaluation?
+  csatRating     CsatRating?
+}
+
+model Assignment {
+  id           String    @id @default(cuid())
+  ticketId     String    @unique
+  ticket       Ticket    @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  technicianId String
+  technician   User      @relation("AssignedTo", fields: [technicianId], references: [id])
+  assignedById String
+  assignedBy   User      @relation("AssignedBy", fields: [assignedById], references: [id])
+  assignedDate DateTime  @default(now())
+  dueDate      DateTime
+  managerNote  String?
+}
+
+model TaskReport {
+  id             String    @id @default(cuid())
+  ticketId       String    @unique
+  ticket         Ticket    @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  technicianId   String
+  technician     User      @relation(fields: [technicianId], references: [id])
+  reportContent  String
+  proofImages    String?   // JSON string array
+  completedAt    DateTime  @default(now())
+}
+
+model Evaluation {
+  id                String   @id @default(cuid())
+  ticketId          String   @unique
+  ticket            Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  technicianId      String
+  technician        User     @relation(fields: [technicianId], references: [id])
+  qualityScore      Float    @default(0) // 1-10
+  progressScore     Float    @default(0) // 1-10
+  coordinationScore Float    @default(0) // 1-10
+  totalScore        Float    @default(0) // 1-10
+  managerComment    String?
+  createdAt         DateTime @default(now())
+}
+
+model CsatRating {
+  id           String   @id @default(cuid())
+  ticketId     String   @unique
+  ticket       Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  score        Int      // 10, 8, 6, 4
+  feedbackNote String?
+  ratedAt      DateTime @default(now())
+}
+
+model KpiConfig {
+  id                 String   @id @default(cuid())
+  qualityWeight      Float    @default(40)
+  progressWeight     Float    @default(30)
+  satisfactionWeight Float    @default(20)
+  workloadWeight     Float    @default(10)
+  excellentThreshold Float    @default(90)
+  goodThreshold      Float    @default(80)
+  fairThreshold      Float    @default(70)
+  averageThreshold   Float    @default(60)
+  isDefault          Boolean  @default(true)
+  updatedAt          DateTime @updatedAt
+}

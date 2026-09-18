@@ -1,0 +1,8 @@
+node_modules
+.next
+.env
+.env.local
+cookies.txt
+prisma/dev.db
+public/uploads/*
+!public/uploads/.gitkeep

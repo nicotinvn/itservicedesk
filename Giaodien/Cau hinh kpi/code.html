@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>IT ServiceDesk</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;overflow-x:hidden;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#00174b", "inverse-surface": "#283044", "background": "#faf8ff", "on-primary-fixed-variant": "#003ea8", "inverse-on-surface": "#eef0ff", "surface-container": "#eaedff", "surface-container-high": "#e2e7ff", "secondary": "#3755c3", "tertiary-container": "#00788c", "surface-dim": "#d2d9f4", "on-tertiary-fixed": "#001f26", "inverse-primary": "#b4c5ff", "on-error": "#ffffff", "primary": "#004ac6", "surface-tint": "#0053db", "primary-fixed-dim": "#b4c5ff", "tertiary-fixed-dim": "#4cd7f6", "surface": "#faf8ff", "on-tertiary": "#ffffff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "outline-variant": "#c3c6d7", "on-primary-container": "#eeefff", "on-surface-variant": "#434655", "tertiary": "#005e6e", "on-tertiary-fixed-variant": "#004e5c", "on-tertiary-container": "#d7f6ff", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#173bab", "on-secondary": "#ffffff", "surface-variant": "#dae2fd", "on-background": "#131b2e", "on-secondary-fixed": "#001453", "tertiary-fixed": "#acedff", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-secondary-container": "#00217a", "secondary-fixed": "#dde1ff", "secondary-fixed-dim": "#b8c4ff", "secondary-container": "#708cfd", "primary-container": "#2563eb", "error-container": "#ffdad6", "outline": "#737686", "on-surface": "#131b2e", "primary-fixed": "#dbe1ff", "error": "#ba1a1a", "surface-container-low": "#f2f3ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-xl": "2rem", "margin-desktop": "2rem", "gutter": "1.25rem", "margin-tablet": "1.5rem", "margin": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "body-md": ["Inter"], "label-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed min-h-screen flex flex-col"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="IT-ServiceDesk &amp; KPI Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WIyWcPAzUHClFecFboszzXlfSM6psv_D1hYTqIXe0LXQ1O-QG699UdkWBuOV7Shz9kNIhCl5duxGRM-Ay-htwkIjZ-zakNDUiAUJBHMbwC_yKwIYb2bt-Jg4u99kpj37VTChsLCRrtwh_jReBrhq9gdJNnX56aCu3U_RJbVDBL6yRODLXXibm47IBFbXjxVp2rXupkAx6vzbac_FDIcnnhLRVbiKfmCMrbOytFeJ-Myuoo0XAY1BAzb9c"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate leading-tight tracking-tight">IT ServiceDesk</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Bao Cao Thong Ke</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Thông báo" class="relative w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-error text-on-error font-label-sm text-[10px] font-bold rounded-full ring-2 ring-surface-container-lowest">3</span></button><div class="w-11 h-11 flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM133Vt-gxwZ9S4687hyK5kpyl7INMKz7ondjzHGx4RC0DAnldQgLOGLJe844sR4qNsiTw_90Fz-lsmkCJImjm5WxY9ROr1s8jpLS4i-N3x_qBQ_ebngGCDlo1J6kNeukvLTrDff_TgFwHhnWtQmcLjxEkb8P9OiZNmAvHgpq1UgDbaudCfwUqT_Ei2u6mg2S2AMUNs3Bk788fSp6AqlkYRWJ_yNIVXGnzErbAryaGdnCOMVg6eKyY"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Intro & Control Sub-header -->
+<section class="px-margin pt-space-md pb-space-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">tune</span>
+        Quản trị hệ thống &amp; Cấu hình
+      </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• V.4.2</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">Cấu hình KPI &amp; Danh mục</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Thiết lập công thức tính điểm tự động, thang xếp loại và quản lý danh mục dùng chung bệnh viện</p>
+</div>
+<!-- Segmented Filter Tabs (Mobile Pill Switcher) -->
+<div class="bg-surface-container-high p-1 rounded-xl flex items-center gap-1 mt-1 shadow-inner">
+<button class="flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1.5" id="tab-btn-kpi" onclick="switchTab('kpi')">
+<span class="material-symbols-outlined text-[17px]">calculate</span>
+<span>Công thức &amp; Thang KPI</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1.5" id="tab-btn-catalogs" onclick="switchTab('catalogs')">
+<span class="material-symbols-outlined text-[17px]">folder_managed</span>
+<span>Danh mục Hệ thống</span>
+</button>
+</div>
+</section>
+<!-- TAB 1: KPI Formula & Grade Matrix -->
+<div class="flex flex-col gap-space-lg px-margin pt-space-sm" id="tab-content-kpi">
+<!-- Hero KPI Formula Visualization Card -->
+<div class="bg-gradient-to-br from-primary via-primary-container to-secondary rounded-xl p-space-md text-on-primary shadow-md relative overflow-hidden">
+<!-- Ambient decorative rings -->
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-on-primary/10 pointer-events-none"></div>
+<div class="absolute right-12 -top-10 w-24 h-24 rounded-full bg-tertiary-fixed-dim/15 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">functions</span>
+            Công thức tính điểm tổng
+          </span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/25 text-emerald-100 font-label-sm text-label-sm backdrop-blur-sm" id="status-badge">
+<span class="material-symbols-outlined text-[14px] text-emerald-300">verified</span>
+<span id="total-weight-text">Tổng trọng số: 100% (Hợp lệ)</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/15 backdrop-blur-md rounded-lg p-space-sm">
+<p class="font-headline-sm text-headline-sm text-on-primary leading-snug tracking-tight">
+            Điểm KPI = (<span class="text-tertiary-fixed font-bold" id="formula-w1">40%</span> × Chất lượng) + (<span class="text-tertiary-fixed font-bold" id="formula-w2">30%</span> × Tiến độ) + (<span class="text-tertiary-fixed font-bold" id="formula-w3">20%</span> × CSAT) + (<span class="text-tertiary-fixed font-bold" id="formula-w4">10%</span> × Tải việc)
+          </p>
+</div>
+<div class="flex items-center justify-between text-on-primary/75 font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            Cập nhật realtime chu kỳ tháng
+          </span>
+<span class="font-label-sm text-label-sm font-semibold text-on-primary">Quy chuẩn BV-ITIL 2.4</span>
+</div>
+</div>
+</div>
+<!-- KPI Weight Adjuster Sliders -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">4 Trọng số Thành phần</h2>
+</div>
+<button class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-0.5" onclick="resetWeights()">
+<span class="material-symbols-outlined text-[14px]">history</span>
+          Khôi phục
+        </button>
+</div>
+<!-- Slider 1: Quality -->
+<div class="flex flex-col gap-1.5 p-3 rounded-lg bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">1. Chất lượng công việc (Trưởng phòng)</span>
+</div>
+<div class="flex items-center gap-1">
+<input class="w-14 text-right py-0.5 px-1.5 rounded bg-surface-container-lowest text-primary font-headline-sm text-headline-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" id="input-w1" max="100" min="0" oninput="updateFromInput(1, this.value)" type="number" value="40"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">%</span>
+</div>
+</div>
+<input class="w-full accent-primary h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="slider-w1" max="100" min="0" oninput="updateFromSlider(1, this.value)" type="range" value="40"/>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant text-[12px] pt-0.5">
+<span>Quy tắc: Đánh giá chuyên môn, tuân thủ quy trình HIS/PACS &amp; bảo mật</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Trọng số chính</span>
+</div>
+</div>
+<!-- Slider 2: SLA Progress -->
+<div class="flex flex-col gap-1.5 p-3 rounded-lg bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">2. Tiến độ hoàn thành (Cam kết SLA)</span>
+</div>
+<div class="flex items-center gap-1">
+<input class="w-14 text-right py-0.5 px-1.5 rounded bg-surface-container-lowest text-secondary font-headline-sm text-headline-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary shadow-inner" id="input-w2" max="100" min="0" oninput="updateFromInput(2, this.value)" type="number" value="30"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">%</span>
+</div>
+</div>
+<input class="w-full accent-secondary h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="slider-w2" max="100" min="0" oninput="updateFromSlider(2, this.value)" type="range" value="30"/>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant text-[12px] pt-0.5">
+<span>Quy tắc: Tỷ lệ phiếu xử lý đúng hạn cam kết SLA ITIL (Khẩn, Cao, Thường)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hệ thống đo đạc</span>
+</div>
+</div>
+<!-- Slider 3: CSAT -->
+<div class="flex flex-col gap-1.5 p-3 rounded-lg bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">3. Mức độ hài lòng Khoa phòng (CSAT)</span>
+</div>
+<div class="flex items-center gap-1">
+<input class="w-14 text-right py-0.5 px-1.5 rounded bg-surface-container-lowest text-tertiary font-headline-sm text-headline-sm font-bold focus:outline-none focus:ring-2 focus:ring-tertiary shadow-inner" id="input-w3" max="100" min="0" oninput="updateFromInput(3, this.value)" type="number" value="20"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">%</span>
+</div>
+</div>
+<input class="w-full accent-tertiary h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="slider-w3" max="100" min="0" oninput="updateFromSlider(3, this.value)" type="range" value="20"/>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant text-[12px] pt-0.5">
+<span>Quy tắc: Điểm đánh giá 1-5 sao từ Bác sĩ, Điều dưỡng khi nghiệm thu đóng phiếu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Khách quan 100%</span>
+</div>
+</div>
+<!-- Slider 4: Workload -->
+<div class="flex flex-col gap-1.5 p-3 rounded-lg bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">4. Số lượng hoàn thành (Tải việc)</span>
+</div>
+<div class="flex items-center gap-1">
+<input class="w-14 text-right py-0.5 px-1.5 rounded bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" id="input-w4" max="100" min="0" oninput="updateFromInput(4, this.value)" type="number" value="10"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">%</span>
+</div>
+</div>
+<input class="w-full accent-on-surface-variant h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="slider-w4" max="100" min="0" oninput="updateFromSlider(4, this.value)" type="range" value="10"/>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant text-[12px] pt-0.5">
+<span>Quy tắc: So sánh sản lượng vé đóng với định mức trung bình của toàn đội KTV</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cân bằng tải</span>
+</div>
+</div>
+<!-- Summary Balance Meter -->
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">scale</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tổng tỷ trọng hiện tại:</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="sum-display">100%</span>
+</div>
+</div>
+<!-- Monthly KPI Grade Matrix (Thang xếp loại 5 bậc) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">military_tech</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Thang Xếp loại Tháng</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">5 bậc đánh giá và mức thưởng hiệu suất</p>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container text-primary hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+          Chỉnh sửa
+        </button>
+</div>
+<!-- Grade 1: Xuất sắc -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 font-bold flex items-center justify-center font-headline-sm text-headline-sm shadow-xs flex-shrink-0">A+</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Xuất sắc</span>
+<span class="px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 font-label-sm text-[11px] font-semibold">Thưởng 100%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Điểm KPI: ≥ 90 điểm</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-bold">
+          Top 15% KTV
+        </span>
+</div>
+<!-- Grade 2: Tốt -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<span class="w-10 h-10 rounded-xl bg-blue-100 text-primary font-bold flex items-center justify-center font-headline-sm text-headline-sm shadow-xs flex-shrink-0">A</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Tốt</span>
+<span class="px-2 py-0.5 rounded-full bg-blue-50 text-primary font-label-sm text-[11px] font-semibold">Thưởng 80%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Điểm KPI: 80 - 89 điểm</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+          Chuẩn mục tiêu
+        </span>
+</div>
+<!-- Grade 3: Khá -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<span class="w-10 h-10 rounded-xl bg-teal-100 text-tertiary font-bold flex items-center justify-center font-headline-sm text-headline-sm shadow-xs flex-shrink-0">B</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Khá</span>
+<span class="px-2 py-0.5 rounded-full bg-teal-50 text-tertiary font-label-sm text-[11px] font-semibold">Thưởng 50%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Điểm KPI: 70 - 79 điểm</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+          Đạt yêu cầu
+        </span>
+</div>
+<!-- Grade 4: Trung bình -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center font-headline-sm text-headline-sm shadow-xs flex-shrink-0">C</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Trung bình</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 font-label-sm text-[11px] font-semibold">Không xét thưởng</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Điểm KPI: 60 - 69 điểm</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-amber-100 text-amber-900 font-label-sm text-label-sm font-semibold">
+          Cần cải thiện
+        </span>
+</div>
+<!-- Grade 5: Chưa hoàn thành -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<span class="w-10 h-10 rounded-xl bg-error-container text-on-error-container font-bold flex items-center justify-center font-headline-sm text-headline-sm shadow-xs flex-shrink-0">D</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-error">Chưa hoàn thành</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-[11px] font-semibold">Hạ bậc</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Điểm KPI: &lt; 60 điểm</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-red-100 text-error font-label-sm text-label-sm font-semibold">
+          Kiểm điểm SLA
+        </span>
+</div>
+</div>
+</div>
+<!-- TAB 2: System Catalogs & Master Data -->
+<div class="hidden flex flex-col gap-space-md px-margin pt-space-sm" id="tab-content-catalogs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Danh mục dữ liệu dùng chung</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">4 cấu phần cốt lõi của hệ thống ITIL Bệnh viện</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-primary font-bold">4 Danh mục</span>
+</div>
+<!-- Catalog 1: Khoa / Phòng -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-blue-50 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">domain</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">1. Danh mục Khoa / Phòng</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">24 đơn vị lâm sàng &amp; cận lâm sàng</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-label-sm text-[11px] font-bold">24 Đơn vị</span>
+</div>
+<!-- Quick sample preview tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-1 rounded-md bg-surface-container text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Khoa Cấp Cứu
+        </span>
+<span class="px-2 py-1 rounded-md bg-surface-container text-on-surface font-body-sm text-[12px]">Khoa Khám Bệnh</span>
+<span class="px-2 py-1 rounded-md bg-surface-container text-on-surface font-body-sm text-[12px]">Chẩn đoán Hình ảnh</span>
+<span class="px-2 py-1 rounded-md bg-surface-container text-on-surface font-body-sm text-[12px]">Khoa Xét nghiệm</span>
+<span class="px-2 py-1 rounded-md bg-surface-container text-on-surface font-body-sm text-[12px]">Kế toán - Viện phí</span>
+<span class="px-2 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-[11px] font-bold">+19 khoa khác</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<button class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+          Xem 24 đơn vị
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-container-high transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span>
+          Thêm khoa phòng
+        </button>
+</div>
+</div>
+<!-- Catalog 2: Users & Permissions -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">manage_accounts</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">2. Người dùng &amp; Phân quyền</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">32 tài khoản đang vận hành thực tế</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-blue-100 text-primary font-label-sm text-[11px] font-bold">4 Vai trò</span>
+</div>
+<!-- Role Distribution Pills -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface text-[12px]">1 Quản trị viên (Admin)</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface text-[12px]">1 Trưởng phòng CNTT</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface text-[12px]">8 Kỹ thuật viên (KTV)</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface text-[12px]">22 Đại diện Khoa phòng</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-on-surface-variant font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+          Đồng bộ LDAP / BV Active Directory
+        </span>
+<button class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:underline">
+          Chi tiết phân quyền
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Catalog 3: IT Request Types (9 standard incident types) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">category</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">3. Loại yêu cầu CNTT (Sự cố)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">9 nhóm sự cố chuẩn hóa tiếp nhận vé</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[11px] font-bold">9 Danh mục</span>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">computer</span> Sửa chữa PC
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">print</span> Máy in / Mã vạch
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">install_desktop</span> Cài phần mềm
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">wifi</span> Mạng Internet/LAN
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-indigo-600">videocam</span> Camera giám sát
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-purple-600">medical_services</span> Phần mềm HIS/EMR
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-amber-600">mail</span> Email nội bộ
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-600">dns</span> Máy chủ &amp; NAS
+        </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-body-sm text-[12px]">Hỗ trợ kỹ thuật khác</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-on-surface-variant font-body-sm text-[12px]">Gắn form nhập liệu tương ứng</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-container-high transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span>
+          Thêm phân loại
+        </button>
+</div>
+</div>
+<!-- Catalog 4: Priority & SLA Policy -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-red-50 text-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">4. Mức độ Ưu tiên &amp; Cam kết SLA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Chỉ số ITIL cam kết toàn viện</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-[11px] font-bold">4 Cấp SLA</span>
+</div>
+<!-- SLA Level Details -->
+<div class="flex flex-col gap-2 pt-1">
+<!-- Khẩn cấp -->
+<div class="p-2.5 rounded-lg bg-red-50/60 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+<div>
+<span class="font-label-md text-label-md font-bold text-error">Khẩn cấp (Code Red)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Phòng mổ, Hồi sức CC, Sập HIS viện</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-error">Phản hồi &lt; 15p</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Xử lý &lt; 45p</p>
+</div>
+</div>
+<!-- Cao -->
+<div class="p-2.5 rounded-lg bg-amber-50/70 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<div>
+<span class="font-label-md text-label-md font-bold text-amber-900">Cao</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Quầy thanh toán viện phí, Xét nghiệm</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-amber-900">Phản hồi &lt; 30p</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Xử lý &lt; 2h</p>
+</div>
+</div>
+<!-- Bình thường -->
+<div class="p-2.5 rounded-lg bg-blue-50/70 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<div>
+<span class="font-label-md text-label-md font-bold text-primary">Bình thường</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Máy in, Word/Excel, Máy tính khoa</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-primary">Phản hồi &lt; 2h</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Xử lý trong ngày</p>
+</div>
+</div>
+<!-- Thấp -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Thấp</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Cấp tài khoản mới, đề xuất mua sắm</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface">Phản hồi 4h</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Xử lý &lt; 48h</p>
+</div>
+</div>
+</div>
+<div class="pt-1 text-right">
+<button class="text-primary font-label-sm text-label-sm font-semibold inline-flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]">cloud_download</span>
+          Thiết lập cấu hình thông báo chuông SLA
+        </button>
+</div>
+</div>
+</div>
+<!-- Mobile Visual Asset / Micro-infographic Banner -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl overflow-hidden shadow-xs relative bg-surface-container-high h-28 flex items-center p-space-md justify-between">
+<div class="flex flex-col max-w-[65%] z-10">
+<span class="font-label-sm text-label-sm font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">security</span>
+          Chu kỳ áp dụng Tháng 10/2023
+        </span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight mt-1">Đảm bảo SLA ≥ 95%</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px] mt-0.5">Tiêu chuẩn kiểm định chất lượng y tế Bộ Y Tế</p>
+</div>
+<img class="w-24 h-24 object-contain -mr-2 flex-shrink-0" data-alt="High quality professional 3D vector illustration of medical IT server network and hospital dashboard with blue clean aesthetic, soft ambient lighting, enterprise tech precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3xtJMX4KEykdcDZAS7mK64fU-Hmkd-hhyLzt2HQmlo56ssQquoLTU3Rbo3CqY2C1psaAGCDlDB3uj6MhsA1nALPbMfRG1GQJHMhnMkaYL3yEdmVGAqXgIxB5CXm6glOPKrKwsrlQJXSTh5MDD_BvNku3bcIouM93gvI59YiD0xl2FvPQDp63HnnrAJdTsGYpGMUdr8GZOE1xDd1kN2Yuw9AHOAu-t-allHNc6FuyLdprXQNRGOX8o"/>
+</div>
+</div>
+<!-- Sticky-like Action Card Footer -->
+<section class="px-margin pt-space-md pb-space-lg flex flex-col gap-space-sm mt-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span class="font-body-sm text-body-sm text-[12px]">Lần cập nhật gần nhất: <strong>01/10/2023</strong> bởi <strong>Admin (Trần Anh Tuấn)</strong></span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full h-11 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="save-btn" onclick="triggerSaveAnimation()">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span id="save-btn-text">Lưu &amp; Áp dụng cho chu kỳ mới</span>
+</button>
+<button class="w-full h-10 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1.5" onclick="resetDefaults()">
+<span class="material-symbols-outlined text-[17px]">restore</span>
+<span>Khôi phục mặc định ban đầu</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<script>
+  let weights = { 1: 40, 2: 30, 3: 20, 4: 10 };
+
+  function switchTab(tabId) {
+    const kpiContent = document.getElementById('tab-content-kpi');
+    const catalogContent = document.getElementById('tab-content-catalogs');
+    const btnKpi = document.getElementById('tab-btn-kpi');
+    const btnCatalogs = document.getElementById('tab-btn-catalogs');
+
+    if (tabId === 'kpi') {
+      kpiContent.classList.remove('hidden');
+      catalogContent.classList.add('hidden');
+      
+      btnKpi.className = "flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1.5";
+      btnCatalogs.className = "flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1.5";
+    } else {
+      kpiContent.classList.add('hidden');
+      catalogContent.classList.remove('hidden');
+
+      btnCatalogs.className = "flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1.5";
+      btnKpi.className = "flex-1 py-2 px-3 rounded-lg font-label-md text-label-md text-center transition-all duration-200 text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1.5";
+    }
+  }
+
+  function updateFromSlider(id, val) {
+    weights[id] = parseInt(val, 10) || 0;
+    document.getElementById('input-w' + id).value = weights[id];
+    recalculateWeights();
+  }
+
+  function updateFromInput(id, val) {
+    let num = parseInt(val, 10);
+    if (isNaN(num)) num = 0;
+    if (num > 100) num = 100;
+    if (num < 0) num = 0;
+    weights[id] = num;
+    document.getElementById('slider-w' + id).value = num;
+    recalculateWeights();
+  }
+
+  function recalculateWeights() {
+    const total = weights[1] + weights[2] + weights[3] + weights[4];
+    
+    // update formula display
+    document.getElementById('formula-w1').innerText = weights[1] + '%';
+    document.getElementById('formula-w2').innerText = weights[2] + '%';
+    document.getElementById('formula-w3').innerText = weights[3] + '%';
+    document.getElementById('formula-w4').innerText = weights[4] + '%';
+    
+    const sumDisplay = document.getElementById('sum-display');
+    sumDisplay.innerText = total + '%';
+
+    const statusBadge = document.getElementById('status-badge');
+    const badgeText = document.getElementById('total-weight-text');
+
+    if (total === 100) {
+      sumDisplay.className = "font-headline-sm text-headline-sm font-bold text-emerald-600";
+      statusBadge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/25 text-emerald-100 font-label-sm text-label-sm backdrop-blur-sm";
+      badgeText.innerText = "Tổng trọng số: 100% (Hợp lệ)";
+    } else {
+      sumDisplay.className = "font-headline-sm text-headline-sm font-bold text-error";
+      statusBadge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-500/30 text-rose-100 font-label-sm text-label-sm backdrop-blur-sm";
+      badgeText.innerText = "Tổng: " + total + "% (Cần bằng 100%)";
+    }
+  }
+
+  function resetWeights() {
+    weights = { 1: 40, 2: 30, 3: 20, 4: 10 };
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById('slider-w' + i).value = weights[i];
+      document.getElementById('input-w' + i).value = weights[i];
+    }
+    recalculateWeights();
+  }
+
+  function resetDefaults() {
+    if (confirm("Khôi phục tất cả thiết lập về giá trị mặc định của hệ thống?")) {
+      resetWeights();
+    }
+  }
+
+  function triggerSaveAnimation() {
+    const total = weights[1] + weights[2] + weights[3] + weights[4];
+    if (total !== 100) {
+      alert("Cảnh báo: Tổng các trọng số hiện tại là " + total + "%. Bạn cần điều chỉnh tổng vừa đúng 100% trước khi kích hoạt áp dụng!");
+      return;
+    }
+    const btn = document.getElementById('save-btn');
+    const btnText = document.getElementById('save-btn-text');
+    const originalText = btnText.innerText;
+    
+    btn.disabled = true;
+    btn.classList.add('opacity-90');
+    btnText.innerText = "Đang đồng bộ cơ sở dữ liệu...";
+
+    setTimeout(() => {
+      btnText.innerText = "Đã lưu & Áp dụng thành công!";
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-emerald-600');
+      setTimeout(() => {
+        btnText.innerText = originalText;
+        btn.classList.remove('bg-emerald-600');
+        btn.classList.add('bg-primary');
+        btn.disabled = false;
+        btn.classList.remove('opacity-90');
+      }, 2000);
+    }, 800);
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-1"><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="tong-quan" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-[10px] sm:text-label-sm leading-none truncate max-w-full px-0.5">Tổng quan</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="phieu-yeu-cau" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-[10px] sm:text-label-sm leading-none truncate max-w-full px-0.5">Yêu cầu</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="ky-thuat-vien" href="#"><span class="material-symbols-outlined text-[22px]">build</span><span class="font-label-sm text-[10px] sm:text-label-sm leading-none truncate max-w-full px-0.5">Kỹ thuật</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="khoa-phong" href="#"><span class="material-symbols-outlined text-[22px]">domain</span><span class="font-label-sm text-[10px] sm:text-label-sm leading-none truncate max-w-full px-0.5">Khoa phòng</span></a><a aria-current="page" class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 transition-colors min-h-[44px] text-primary-container font-semibold" data-path="bao-cao-thong-ke" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-[10px] sm:text-label-sm leading-none truncate max-w-full px-0.5">Báo cáo</span></a></div></nav></body></html>

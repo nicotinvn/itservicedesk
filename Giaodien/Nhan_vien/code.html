@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>IT ServiceDesk</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;overflow-x:hidden;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#00174b", "inverse-surface": "#283044", "background": "#faf8ff", "on-primary-fixed-variant": "#003ea8", "inverse-on-surface": "#eef0ff", "surface-container": "#eaedff", "surface-container-high": "#e2e7ff", "secondary": "#3755c3", "tertiary-container": "#00788c", "surface-dim": "#d2d9f4", "on-tertiary-fixed": "#001f26", "inverse-primary": "#b4c5ff", "on-error": "#ffffff", "primary": "#004ac6", "surface-tint": "#0053db", "primary-fixed-dim": "#b4c5ff", "tertiary-fixed-dim": "#4cd7f6", "surface": "#faf8ff", "on-tertiary": "#ffffff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "outline-variant": "#c3c6d7", "on-primary-container": "#eeefff", "on-surface-variant": "#434655", "tertiary": "#005e6e", "on-tertiary-fixed-variant": "#004e5c", "on-tertiary-container": "#d7f6ff", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#173bab", "on-secondary": "#ffffff", "surface-variant": "#dae2fd", "on-background": "#131b2e", "on-secondary-fixed": "#001453", "tertiary-fixed": "#acedff", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-secondary-container": "#00217a", "secondary-fixed": "#dde1ff", "secondary-fixed-dim": "#b8c4ff", "secondary-container": "#708cfd", "primary-container": "#2563eb", "error-container": "#ffdad6", "outline": "#737686", "on-surface": "#131b2e", "primary-fixed": "#dbe1ff", "error": "#ba1a1a", "surface-container-low": "#f2f3ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-xl": "2rem", "margin-desktop": "2rem", "gutter": "1.25rem", "margin-tablet": "1.5rem", "margin": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "body-md": ["Inter"], "label-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed min-h-screen flex flex-col"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="IT-ServiceDesk &amp; KPI Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WIyWcPAzUHClFecFboszzXlfSM6psv_D1hYTqIXe0LXQ1O-QG699UdkWBuOV7Shz9kNIhCl5duxGRM-Ay-htwkIjZ-zakNDUiAUJBHMbwC_yKwIYb2bt-Jg4u99kpj37VTChsLCRrtwh_jReBrhq9gdJNnX56aCu3U_RJbVDBL6yRODLXXibm47IBFbXjxVp2rXupkAx6vzbac_FDIcnnhLRVbiKfmCMrbOytFeJ-Myuoo0XAY1BAzb9c"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate leading-tight tracking-tight">IT ServiceDesk</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Ky Thuat Vien</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Thông báo" class="relative w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-error text-on-error font-label-sm text-[10px] font-bold rounded-full ring-2 ring-surface-container-lowest">3</span></button><div class="w-11 h-11 flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM133Vt-gxwZ9S4687hyK5kpyl7INMKz7ondjzHGx4RC0DAnldQgLOGLJe844sR4qNsiTw_90Fz-lsmkCJImjm5WxY9ROr1s8jpLS4i-N3x_qBQ_ebngGCDlo1J6kNeukvLTrDff_TgFwHhnWtQmcLjxEkb8P9OiZNmAvHgpq1UgDbaudCfwUqT_Ei2u6mg2S2AMUNs3Bk788fSp6AqlkYRWJ_yNIVXGnzErbAryaGdnCOMVg6eKyY"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full px-margin py-space-sm gap-space-md">
+<!-- Technician Profile Header Banner -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-center gap-space-md relative z-10">
+<div class="relative flex-shrink-0">
+<img class="w-16 h-16 rounded-xl object-cover shadow-sm" data-alt="Chân dung kỹ thuật viên công nghệ thông tin bệnh viện nam giới trẻ tuổi Việt Nam đeo thẻ nhân viên y tế phong thái tự tin và tận tâm trong văn phòng kỹ thuật hiện đại" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMgXZtXATit1hGkNebGsFuqFdksytcO1_aveHs8wfl0moxvbxHQyqBrDqzW8dv53gQaMi9J5TtxzlTswa-pzt7fTu27zzUO0c9vLWBTG4cVyXJAy6J7uEswh9pz8s3TeKSXJnrE1fML4MjWTKGS-l2f7htu3tfxH7iFWUUG9y5YL0qzIwovUdPi4eCghgtC9-m89Qwh2MmNw9nx7caYJRMGCgaLW9v-RHydr6mhS2icFCxEPTJSBhb"/>
+<span class="absolute -bottom-1 -right-1 flex h-4 w-4">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-tertiary"></span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Lê Văn Minh</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold flex-shrink-0">KTV Chính</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">medical_services</span>
+          Đội Cơ động &amp; Mạng Bệnh viện
+        </p>
+<!-- Metrics Chips -->
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[15px] text-tertiary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-sm text-label-sm text-on-surface">KPI: <strong class="text-primary font-bold">94.5</strong></span>
+<span class="text-[10px] text-tertiary font-medium">(Xuất Sắc)</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[15px] text-secondary">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface">Tháng: <strong class="font-bold">32 phiếu</strong></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Urgent Ticket Card -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col gap-space-sm relative overflow-hidden">
+<!-- Top badge bar -->
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-error-container text-on-error-container font-label-sm text-label-sm font-bold flex items-center gap-1 animate-pulse">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+          Khẩn cấp
+        </span>
+<span class="font-label-md text-label-md font-bold text-primary">#YC2025060001</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high text-on-surface-variant rounded-md">
+        Bước 5/5
+      </span>
+</div>
+<!-- Ticket Description -->
+<div class="flex flex-col gap-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Máy in mã vạch cấp cứu mất kết nối mạng LAN</h3>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-error">emergency</span>
+<span class="font-semibold text-on-surface">Khoa Cấp cứu</span>
+<span>• Quầy Tiếp đón bệnh nhân số 1</span>
+</div>
+</div>
+<!-- SLA Countdown Widget -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-3 min-w-0">
+<!-- Circular Progress Ring (Inline SVG) -->
+<div class="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-error" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="37.68" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="material-symbols-outlined absolute text-[20px] text-error animate-pulse">hourglass_bottom</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Thời hạn SLA khẩn cấp</span>
+<span class="font-headline-sm text-headline-sm text-error font-bold tracking-tight">Còn 28 phút</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hạn chót: 10:45</span>
+<span class="text-[10px] font-semibold text-tertiary bg-tertiary-container/10 px-1.5 py-0.5 rounded">Trong khung cam kết</span>
+</div>
+</div>
+<!-- Quick Status Toggles -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="h-10 px-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95" id="btn-started" onclick="setWorkingStatus('started')">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span>Bắt đầu xử lý</span>
+</button>
+<button class="h-10 px-space-xs rounded-lg bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm" id="btn-inspecting" onclick="setWorkingStatus('inspecting')">
+<span class="material-symbols-outlined text-[18px]">build_circle</span>
+<span>Đang kiểm tra TB</span>
+</button>
+</div>
+</section>
+<!-- Ticket Completion Report Form (Step 5) -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col gap-space-md">
+<!-- Header with visual ribbon -->
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">assignment_turned_in</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Bước 5 / 5 Quy trình xử lý</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Nghiệm thu &amp; Báo cáo kết quả</h3>
+</div>
+</div>
+<!-- Field 1: Action Notes -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>Chi tiết phương án &amp; kết quả xử lý</span>
+<span class="text-tertiary text-[11px] font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Đạt chuẩn HIS
+        </span>
+</label>
+<div class="w-full bg-surface-container-low rounded-xl p-space-sm text-on-surface font-body-md text-body-md shadow-inner flex flex-col gap-1">
+<p class="leading-relaxed">Đã bấm lại đầu mạng Cat6 cho máy trạm tiếp đón số 1, cấu hình lại IP tĩnh máy in mã vạch Zebra ZD230. Đã in thử phiếu khám thành công.</p>
+<span class="text-[11px] text-on-surface-variant italic text-right mt-1">Cập nhật lúc 10:17 - Hiện trường Khoa CC</span>
+</div>
+</div>
+<!-- Field 2: Performance & Time Metric -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Thời gian thực hiện thực tế</label>
+<div class="bg-surface-container-low rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary">timer</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">25 phút</span>
+</div>
+<span class="px-2 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+          Tiết kiệm 20 phút so với SLA
+        </span>
+</div>
+</div>
+<!-- Field 3: Proof Images -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Minh chứng hoàn thành (2 ảnh)</label>
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">add_a_photo</span>
+          Chụp bổ sung
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Photo 1 -->
+<div class="flex flex-col gap-1">
+<div class="relative rounded-xl overflow-hidden shadow-sm aspect-video bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cận cảnh máy in mã vạch y tế màu trắng Zebra ZD230 đang in nhãn vòng đeo tay bệnh nhân tại quầy cấp cứu bệnh viện có đèn tín hiệu màu xanh lá cây sẵn sàng" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH3mrVaAgpYLx2RZMu2LANc_S9mVcwnpHBVAPXpN2i0h1gLWGIff0cIJL1f7GD_V3z70Fx3fnTgqbfFb1WfQVTxaQqgWxSATCBHNasYyNu-IKB_Zw9nE5Vkal43H7lGP2R3-7MKN39Xvj-3bbGvU9lMjdYO-8NTBjEldslBuA7rFA_yNagfDhwzCq4zaZUwpFtc3nIBCS8nn796Roe8Z4lSz3BrF8dQZZJWUajA8vWx88CEkVQxuvA"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-on-surface/70 backdrop-blur-sm text-surface-bright text-[10px] font-medium">Ảnh máy in</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Máy in hoạt động tốt</span>
+</div>
+<!-- Photo 2 -->
+<div class="flex flex-col gap-1">
+<div class="relative rounded-xl overflow-hidden shadow-sm aspect-video bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Biên bản bàn giao kỹ thuật CNTT trên bảng kẹp giấy có chữ ký bút mực màu xanh của Điều dưỡng trưởng khoa cấp cứu tại bàn làm việc y tế" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA24ih7Vc3pnsb4KfmSCYnqkTz4Xsycuc6qFp6OqU8T9BjmCxn-MXztdqFH48nybO_UuOu96uR_3E_nBhu_8jnPtX5CZeVjhR2VSXC199vF3FFRFZ0zzUj8atjclKxXklcnM5sK1lQiqLA-TphbbkPFKqvUEvr6otV0hYf7xOVOjMfJIdkFxEhxUsB4hWKNBbvUIp7QxVzy2q_Wsu7gxKmWA6gv0RABTxFpk3vHxEHpEwM6kVi3-osI"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-on-surface/70 backdrop-blur-sm text-surface-bright text-[10px] font-medium">Biên bản</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Ký xác nhận ĐD Trưởng</span>
+</div>
+</div>
+</div>
+<!-- Submit Primary Button -->
+<button class="w-full h-12 mt-1 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-[0.98]" id="btn-submit-report" onclick="submitTicketResolution()">
+<span class="material-symbols-outlined text-[20px]">send_time_extension</span>
+<span>Gửi báo cáo &amp; Chuyển TP duyệt</span>
+</button>
+</section>
+<!-- Upcoming Queue in Shift -->
+<section class="w-full flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-secondary">queue</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Phiếu chờ tiếp theo</h4>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">Ca trực: 2 việc</span>
+</div>
+<!-- Queue Card 1 -->
+<article class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs transition-colors active:bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-primary">#YC2025060008</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">PACS / EMR</span>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Ưu tiên Cao
+        </span>
+</div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cài đặt phần mềm đọc kết quả PACS</h5>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class="flex items-center gap-1 truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary">domain</span>
+<span>Khoa Chẩn đoán hình ảnh (Phòng CT 128)</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 13:30
+        </span>
+</div>
+</article>
+<!-- Queue Card 2 -->
+<article class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs transition-colors active:bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-primary">#YC2025060012</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">Phần cứng PC</span>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+          Bình thường
+        </span>
+</div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Kiểm tra nguồn máy tính bàn kế toán viện phí</h5>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class="flex items-center gap-1 truncate">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">account_balance</span>
+<span>Phòng Tài chính Kế toán (Tầng 2)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-0.5 flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15:00
+        </span>
+</div>
+</article>
+</section>
+</div>
+<script>
+  function setWorkingStatus(status) {
+    const btnStarted = document.getElementById('btn-started');
+    const btnInspecting = document.getElementById('btn-inspecting');
+    
+    if (status === 'started') {
+      btnStarted.className = "h-10 px-space-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm";
+      btnInspecting.className = "h-10 px-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95";
+    } else {
+      btnStarted.className = "h-10 px-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95";
+      btnInspecting.className = "h-10 px-space-xs rounded-lg bg-secondary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm";
+    }
+  }
+
+  function submitTicketResolution() {
+    const btn = document.getElementById('btn-submit-report');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>Đang đồng bộ hồ sơ...</span>';
+    
+    setTimeout(() => {
+      btn.className = "w-full h-12 mt-1 rounded-xl bg-tertiary text-on-tertiary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm";
+      btn.innerHTML = '<span class="material-symbols-outlined text-[22px]">check_circle</span><span>Đã gửi duyệt thành công!</span>';
+    }, 1200);
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="tong-quan" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm leading-none">Tổng quan</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="phieu-yeu-cau" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm leading-none">Phiếu yêu cầu</span></a><a aria-current="page" class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 transition-colors min-h-[44px] text-primary-container font-semibold" data-path="ky-thuat-vien" href="#"><span class="material-symbols-outlined text-[22px]">build</span><span class="font-label-sm text-label-sm leading-none">Kỹ thuật viên</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="khoa-phong" href="#"><span class="material-symbols-outlined text-[22px]">domain</span><span class="font-label-sm text-label-sm leading-none">Khoa phòng</span></a></div></nav></body></html>

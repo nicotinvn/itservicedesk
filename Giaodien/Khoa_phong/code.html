@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>IT ServiceDesk</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;overflow-x:hidden;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#00174b", "inverse-surface": "#283044", "background": "#faf8ff", "on-primary-fixed-variant": "#003ea8", "inverse-on-surface": "#eef0ff", "surface-container": "#eaedff", "surface-container-high": "#e2e7ff", "secondary": "#3755c3", "tertiary-container": "#00788c", "surface-dim": "#d2d9f4", "on-tertiary-fixed": "#001f26", "inverse-primary": "#b4c5ff", "on-error": "#ffffff", "primary": "#004ac6", "surface-tint": "#0053db", "primary-fixed-dim": "#b4c5ff", "tertiary-fixed-dim": "#4cd7f6", "surface": "#faf8ff", "on-tertiary": "#ffffff", "surface-container-highest": "#dae2fd", "surface-bright": "#faf8ff", "outline-variant": "#c3c6d7", "on-primary-container": "#eeefff", "on-surface-variant": "#434655", "tertiary": "#005e6e", "on-tertiary-fixed-variant": "#004e5c", "on-tertiary-container": "#d7f6ff", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#173bab", "on-secondary": "#ffffff", "surface-variant": "#dae2fd", "on-background": "#131b2e", "on-secondary-fixed": "#001453", "tertiary-fixed": "#acedff", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "on-secondary-container": "#00217a", "secondary-fixed": "#dde1ff", "secondary-fixed-dim": "#b8c4ff", "secondary-container": "#708cfd", "primary-container": "#2563eb", "error-container": "#ffdad6", "outline": "#737686", "on-surface": "#131b2e", "primary-fixed": "#dbe1ff", "error": "#ba1a1a", "surface-container-low": "#f2f3ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-xl": "2rem", "margin-desktop": "2rem", "gutter": "1.25rem", "margin-tablet": "1.5rem", "margin": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "body-md": ["Inter"], "label-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed min-h-screen flex flex-col"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="IT-ServiceDesk &amp; KPI Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WIyWcPAzUHClFecFboszzXlfSM6psv_D1hYTqIXe0LXQ1O-QG699UdkWBuOV7Shz9kNIhCl5duxGRM-Ay-htwkIjZ-zakNDUiAUJBHMbwC_yKwIYb2bt-Jg4u99kpj37VTChsLCRrtwh_jReBrhq9gdJNnX56aCu3U_RJbVDBL6yRODLXXibm47IBFbXjxVp2rXupkAx6vzbac_FDIcnnhLRVbiKfmCMrbOytFeJ-Myuoo0XAY1BAzb9c"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate leading-tight tracking-tight">IT ServiceDesk</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Khoa Phong</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Thông báo" class="relative w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-error text-on-error font-label-sm text-[10px] font-bold rounded-full ring-2 ring-surface-container-lowest">3</span></button><div class="w-11 h-11 flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM133Vt-gxwZ9S4687hyK5kpyl7INMKz7ondjzHGx4RC0DAnldQgLOGLJe844sR4qNsiTw_90Fz-lsmkCJImjm5WxY9ROr1s8jpLS4i-N3x_qBQ_ebngGCDlo1J6kNeukvLTrDff_TgFwHhnWtQmcLjxEkb8P9OiZNmAvHgpq1UgDbaudCfwUqT_Ei2u6mg2S2AMUNs3Bk788fSp6AqlkYRWJ_yNIVXGnzErbAryaGdnCOMVg6eKyY"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Friendly Ambient Greeting Banner -->
+<div class="px-margin pt-space-md pb-space-sm">
+<div class="relative overflow-hidden bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="absolute -right-4 -bottom-6 w-28 h-28 bg-primary-fixed/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="min-w-0 flex-1">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm mb-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Tiếp nhận 24/7
+          </div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Cổng Hỗ trợ Công nghệ Thông tin</h1>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">apartment</span>
+<span class="font-medium text-on-surface">Khoa Khám Bệnh</span>
+<span class="text-outline-variant">•</span>
+<span>Phòng Khám 102</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center shadow-sm flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Segmented Tab Navigation -->
+<div class="px-margin py-space-xs">
+<div class="grid grid-cols-2 p-1 bg-surface-container rounded-xl">
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm transition-all" id="tab-create-btn" onclick="switchMainTab('create')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Tạo yêu cầu mới</span>
+</button>
+<button class="relative flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface transition-all" id="tab-csat-btn" onclick="switchMainTab('csat')">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+<span>Lịch sử &amp; Đánh giá</span>
+<span class="flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-error text-on-error font-label-sm text-[10px] font-bold rounded-full">1</span>
+</button>
+</div>
+</div>
+<!-- TAB CONTENT 1: Quick Ticket Creation Form -->
+<div class="flex flex-col gap-space-md px-margin py-space-sm" id="panel-create">
+<!-- Category Selector -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">category</span>
+          Chọn loại thiết bị / Sự cố
+        </label>
+<span class="font-label-sm text-label-sm text-primary font-medium">Bắt buộc</span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1" id="category-grid">
+<!-- Option 1: Computer -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent" onclick="selectCategory(this, 'pc')" type="button">
+<span class="material-symbols-outlined text-[26px] text-primary mb-1">desktop_windows</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">Máy vi tính</span>
+</button>
+<!-- Option 2: Printer / Barcode -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-primary-container text-on-primary font-medium transition-all active:scale-95 text-center min-h-[82px] shadow-sm" onclick="selectCategory(this, 'printer')" type="button">
+<span class="material-symbols-outlined text-[26px] text-on-primary mb-1" style="font-variation-settings: 'FILL' 1;">print</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">Máy in / Mã vạch</span>
+</button>
+<!-- Option 3: Network / Wifi -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent" onclick="selectCategory(this, 'network')" type="button">
+<span class="material-symbols-outlined text-[26px] text-primary mb-1">wifi_off</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">Mạng / Wifi</span>
+</button>
+<!-- Option 4: Software HIS/EMR -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent" onclick="selectCategory(this, 'software')" type="button">
+<span class="material-symbols-outlined text-[26px] text-primary mb-1">medical_services</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">HIS / EMR</span>
+</button>
+<!-- Option 5: Camera -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent" onclick="selectCategory(this, 'camera')" type="button">
+<span class="material-symbols-outlined text-[26px] text-primary mb-1">videocam</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">Camera</span>
+</button>
+<!-- Option 6: Other -->
+<button class="cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent" onclick="selectCategory(this, 'other')" type="button">
+<span class="material-symbols-outlined text-[26px] text-primary mb-1">more_horiz</span>
+<span class="font-label-sm text-label-sm leading-tight line-clamp-2">Hỗ trợ khác</span>
+</button>
+</div>
+</div>
+<!-- Urgency Level Selection -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">flag</span>
+          Mức độ khẩn cấp
+        </label>
+<span class="font-label-sm text-label-sm text-outline">SLA Cam kết</span>
+</div>
+<div class="grid grid-cols-2 gap-2" id="priority-selector">
+<button class="prio-card p-3 rounded-xl bg-surface-container-low text-left flex flex-col gap-1 transition-all active:scale-98" onclick="selectPriority(this, 'low')" type="button">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Thấp</span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Xử lý trong ngày</span>
+</button>
+<button class="prio-card p-3 rounded-xl bg-surface-container-low text-left flex flex-col gap-1 transition-all active:scale-98" onclick="selectPriority(this, 'normal')" type="button">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Bình thường</span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Phản hồi &lt; 2 giờ</span>
+</button>
+<button class="prio-card p-3 rounded-xl bg-surface-container-low text-left flex flex-col gap-1 transition-all active:scale-98" onclick="selectPriority(this, 'high')" type="button">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Cao</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Phản hồi &lt; 30 phút</span>
+</button>
+<button class="prio-card p-3 rounded-xl bg-error-container text-on-error-container text-left flex flex-col gap-1 transition-all active:scale-98 shadow-sm" onclick="selectPriority(this, 'critical')" type="button">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-error">Khẩn cấp 🚨</span>
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-error-container font-medium">Ngưng tiếp nhận BN</span>
+</button>
+</div>
+</div>
+<!-- Issue Description & Quick Notes -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<label class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">edit_note</span>
+        Mô tả sự cố chi tiết
+      </label>
+<!-- Smart Pre-fills -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap active:bg-surface-variant" onclick="insertSuggestion('Máy in tem mã vạch kẹt giấy, nhấp nháy đèn đỏ')" type="button">
+          + Kẹt giấy in mã vạch
+        </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap active:bg-surface-variant" onclick="insertSuggestion('Phần mềm HIS báo mất kết nối máy chủ dữ liệu')" type="button">
+          + Mất kết nối HIS
+        </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap active:bg-surface-variant" onclick="insertSuggestion('Màn hình hiển thị sọc ngang không rõ thông tin')" type="button">
+          + Hỏng màn hình
+        </button>
+</div>
+<textarea class="w-full p-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm resize-none" id="issue-desc" placeholder="Mô tả hiện tượng, vị trí máy, thông báo lỗi nếu có..." rows="3"></textarea>
+<!-- Camera Capture & Attachment Area -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Đính kèm ảnh chụp hiện trường</span>
+<div class="grid grid-cols-3 gap-2">
+<!-- Direct Camera Trigger -->
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-surface-container-low text-primary hover:bg-surface-container transition-all active:scale-95 h-24" onclick="triggerCamera()" type="button">
+<span class="material-symbols-outlined text-[28px] mb-1">photo_camera</span>
+<span class="font-label-sm text-label-sm text-center leading-tight">Chụp ảnh</span>
+</button>
+<!-- Captured Photo Thumbnail 1 -->
+<div class="relative rounded-xl overflow-hidden shadow-sm h-24 group">
+<img class="w-full h-full object-cover" data-alt="Close up photo of an enterprise barcode label printer with paper jam alert red light blinking on a hospital desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjR28JeheW4ymTc0T7IYg1UtUVf7l7z-vYpDZvXOD5AdDZsjwp2X4Qyli-mQTx8R26Rq27RUuPMU1t1YRR1CiRtI-E1g0HaYHQkiXJf18bGPNZmPMeON71aEhWAUOwvz-RcLmohV8587FNC9-b3wBrqiPOP8O14S9W1h9oOGV47fIGe5fCXhdpVwzCt_uFUlO814Fef7GfNUE9wfP9eKrvVYEKpg4HeMQbG5pwWvxXZ3vTDkmWsUM6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-1.5">
+<span class="font-label-sm text-[10px] text-white font-medium">May_in_01.jpg</span>
+</div>
+<button class="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/50 text-white flex items-center justify-center active:scale-90" onclick="this.parentElement.remove()" type="button">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+<!-- Empty Slot Placeholder -->
+<div class="rounded-xl bg-surface-container-low/60 flex flex-col items-center justify-center text-outline-variant h-24">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<span class="font-label-sm text-[11px]">Tối đa 3 ảnh</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="pt-space-xs pb-space-md">
+<button class="w-full py-3.5 px-space-md rounded-xl bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary transition-all active:scale-98" onclick="showTicketSubmittedToast()" type="button">
+<span class="material-symbols-outlined text-[22px]">send</span>
+<span>Gửi yêu cầu ngay (Tự động sinh mã)</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+        Phiếu sẽ được điều phối tới Kỹ thuật viên trực khu vực Khám Bệnh
+      </p>
+</div>
+</div>
+<!-- TAB CONTENT 2: CSAT Customer Satisfaction Rating Section -->
+<div class="hidden flex-col gap-space-md px-margin py-space-sm" id="panel-csat">
+<!-- Active Completed Ticket Card for Review -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<!-- Ticket Header Badge & Info -->
+<div class="flex items-start justify-between pb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">#YC2025060001</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Đã xử lý xong</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Sự cố mạng máy trạm tiếp đón khoa</span>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Technician Profile Notification Box -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center gap-space-sm">
+<div class="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a friendly professional Vietnamese male hospital IT support engineer wearing high-visibility lanyard badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzHlew39oZbyWBoIeFpGGU9pkApIQKlSArllTK4nirPsdbmKgr7ZBCmUUG--k2CQdYUqv9CeGCouz68cTeKqbjwMpxNkf4x7Cm4FmY4HzIne-srkFYxlQ1i0CUXKGWWXJgR1K8FdV9ICTPG4klXTci0GOIZhxEglS50Ft1CDfAeVCqQn-8tL165XW06jHGakvwqJBavoB1GbjnjI0WDqJJ7BXfs1mljxd3BPns_TmaLIRck4I4o-6j"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Lê Văn Minh</span>
+<span class="font-label-sm text-label-sm text-outline">08:45 hôm nay</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">KTV Phụ trách mạng &amp; máy trạm tầng 1</p>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container text-on-surface font-body-sm text-body-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0">info</span>
+<span>Kỹ thuật viên đã hoàn thành xử lý cổng mạng LAN và kiểm tra băng thông ổn định lúc 08:45.</span>
+</div>
+<!-- 4-Level CSAT Rating Grid -->
+<div class="flex flex-col gap-2">
+<label class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center justify-between">
+<span>Mức độ hài lòng của Bác sĩ / Nhân viên</span>
+<span class="font-label-sm text-label-sm text-primary font-bold" id="score-indicator">10/10 Điểm</span>
+</label>
+<div class="grid grid-cols-2 gap-2.5 pt-1" id="csat-rating-grid">
+<!-- Level 1: Very Satisfied (10 pts) - Currently Active Selected -->
+<button class="csat-option p-3 rounded-xl bg-primary-container text-on-primary flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 shadow-md" onclick="selectCsat(this, 10, '😍 Rất hài lòng')" type="button">
+<span class="text-2xl">😍</span>
+<div class="flex flex-col items-center">
+<span class="font-label-lg text-label-lg font-bold">Rất hài lòng</span>
+<span class="font-label-sm text-label-sm text-on-primary/80">10 điểm (Xuất sắc)</span>
+</div>
+</button>
+<!-- Level 2: Satisfied (8 pts) -->
+<button class="csat-option p-3 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 hover:bg-surface-container" onclick="selectCsat(this, 8, '😊 Hài lòng')" type="button">
+<span class="text-2xl">😊</span>
+<div class="flex flex-col items-center">
+<span class="font-label-lg text-label-lg font-bold">Hài lòng</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">8 điểm (Tốt)</span>
+</div>
+</button>
+<!-- Level 3: Neutral (6 pts) -->
+<button class="csat-option p-3 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 hover:bg-surface-container" onclick="selectCsat(this, 6, '😐 Bình thường')" type="button">
+<span class="text-2xl">😐</span>
+<div class="flex flex-col items-center">
+<span class="font-label-lg text-label-lg font-bold">Bình thường</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">6 điểm (Đạt)</span>
+</div>
+</button>
+<!-- Level 4: Unsatisfied (4 pts) -->
+<button class="csat-option p-3 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 hover:bg-surface-container" onclick="selectCsat(this, 4, '🙁 Chưa hài lòng')" type="button">
+<span class="text-2xl">🙁</span>
+<div class="flex flex-col items-center">
+<span class="font-label-lg text-label-lg font-bold">Chưa hài lòng</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 điểm (Cần cải thiện)</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Qualitative Feedback Comment Box -->
+<div class="flex flex-col gap-2">
+<label class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">chat</span>
+          Nhận xét &amp; Đóng góp ý kiến
+        </label>
+<textarea class="w-full p-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm resize-none" rows="3">Kỹ thuật viên đến rất nhanh trong vòng 5 phút, thái độ hỗ trợ nhiệt tình chu đáo!</textarea>
+</div>
+<!-- Quick Compliment Tags -->
+<div class="flex flex-wrap gap-1.5">
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm active:bg-primary-fixed active:text-on-primary-fixed" type="button">⚡ Đến đúng hẹn</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm active:bg-primary-fixed active:text-on-primary-fixed" type="button">👨‍⚕️ Tôn trọng không gian khám</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm active:bg-primary-fixed active:text-on-primary-fixed" type="button">🎯 Xử lý dứt điểm</button>
+</div>
+<!-- Confirm & Close Ticket Button -->
+<div class="pt-space-xs">
+<button class="w-full py-3.5 px-space-md rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container transition-all active:scale-98" onclick="submitCsatFeedback()" type="button">
+<span class="material-symbols-outlined text-[22px]">task_alt</span>
+<span>Gửi đánh giá &amp; Xác nhận đóng phiếu</span>
+</button>
+<span class="block text-center font-label-sm text-label-sm text-on-surface-variant mt-2">
+          Đánh giá của bạn giúp cải thiện chất lượng phục vụ công nghệ tại Bệnh viện
+        </span>
+</div>
+</div>
+<!-- Mini History List / Previous Requests Preview -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Yêu cầu gần đây của Khoa</span>
+<div class="divide-y divide-transparent flex flex-col gap-2">
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-outline text-[20px]">print</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold truncate">Thay mực máy in phiếu khám</span>
+<span class="font-label-sm text-label-sm text-outline">Hôm qua • Đã đóng</span>
+</div>
+</div>
+<span class="text-sm font-bold text-primary">10 ★</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro Interaction Toast / Success Feedback Notification (Hidden by default) -->
+<div class="fixed bottom-20 inset-x-margin z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-4" id="action-toast">
+<div class="max-w-md mx-auto bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl shadow-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[24px]">check_circle</span>
+<div class="flex-1 min-w-0">
+<p class="font-label-lg text-label-lg font-bold" id="toast-title">Đã tạo phiếu thành công!</p>
+<p class="font-body-sm text-body-sm opacity-90 truncate" id="toast-desc">Mã phiếu: #YC2025060002 • Đang điều phối KTV</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchMainTab(tab) {
+    const panelCreate = document.getElementById('panel-create');
+    const panelCsat = document.getElementById('panel-csat');
+    const tabCreateBtn = document.getElementById('tab-create-btn');
+    const tabCsatBtn = document.getElementById('tab-csat-btn');
+
+    if (tab === 'create') {
+      panelCreate.classList.remove('hidden');
+      panelCsat.classList.add('hidden');
+      
+      tabCreateBtn.className = 'flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm transition-all';
+      tabCsatBtn.className = 'relative flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface transition-all';
+    } else {
+      panelCreate.classList.add('hidden');
+      panelCsat.classList.remove('hidden');
+
+      tabCsatBtn.className = 'relative flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm transition-all';
+      tabCreateBtn.className = 'flex items-center justify-center gap-1.5 py-2.5 px-space-sm rounded-lg text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface transition-all';
+    }
+  }
+
+  function selectCategory(el, type) {
+    document.querySelectorAll('.cat-pill').forEach(btn => {
+      btn.className = 'cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95 text-center min-h-[82px] ring-2 ring-transparent';
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.className = 'material-symbols-outlined text-[26px] text-primary mb-1';
+        icon.style.fontVariationSettings = "'FILL' 0";
+      }
+    });
+
+    el.className = 'cat-pill flex flex-col items-center justify-center p-2.5 rounded-xl bg-primary-container text-on-primary font-medium transition-all active:scale-95 text-center min-h-[82px] shadow-sm';
+    const activeIcon = el.querySelector('.material-symbols-outlined');
+    if (activeIcon) {
+      activeIcon.className = 'material-symbols-outlined text-[26px] text-on-primary mb-1';
+      activeIcon.style.fontVariationSettings = "'FILL' 1";
+    }
+  }
+
+  function selectPriority(el, level) {
+    document.querySelectorAll('.prio-card').forEach(card => {
+      card.classList.remove('ring-2', 'ring-primary', 'shadow-sm');
+    });
+    el.classList.add('ring-2', 'ring-primary', 'shadow-sm');
+  }
+
+  function insertSuggestion(text) {
+    const textarea = document.getElementById('issue-desc');
+    if (textarea) {
+      textarea.value = text;
+      textarea.focus();
+    }
+  }
+
+  function triggerCamera() {
+    showToast('Máy ảnh sẵn sàng', 'Đang kết nối camera điện thoại để chụp mã lỗi thiết bị...');
+  }
+
+  function selectCsat(el, points, label) {
+    document.querySelectorAll('.csat-option').forEach(btn => {
+      btn.className = 'csat-option p-3 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 hover:bg-surface-container';
+      const sub = btn.querySelector('.font-label-sm');
+      if (sub) sub.className = 'font-label-sm text-label-sm text-on-surface-variant';
+    });
+
+    el.className = 'csat-option p-3 rounded-xl bg-primary-container text-on-primary flex flex-col items-center justify-center gap-1.5 transition-all active:scale-95 shadow-md';
+    const activeSub = el.querySelector('.font-label-sm');
+    if (activeSub) activeSub.className = 'font-label-sm text-label-sm text-on-primary/80';
+
+    const scoreIndicator = document.getElementById('score-indicator');
+    if (scoreIndicator) {
+      scoreIndicator.innerText = points + '/10 Điểm';
+    }
+  }
+
+  function showToast(title, desc) {
+    const toast = document.getElementById('action-toast');
+    document.getElementById('toast-title').innerText = title;
+    document.getElementById('toast-desc').innerText = desc;
+
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-4');
+    }, 3200);
+  }
+
+  function showTicketSubmittedToast() {
+    showToast('Đã tạo phiếu thành công! 🎉', 'Mã: #YC2025060002 • KTV Minh đang di chuyển (ETA 5p)');
+    setTimeout(() => {
+      switchMainTab('csat');
+    }, 1200);
+  }
+
+  function submitCsatFeedback() {
+    showToast('Cảm ơn phản hồi của bạn! ❤️', 'Đã lưu điểm CSAT và hoàn tất thủ tục đóng phiếu.');
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="tong-quan" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm leading-none">Tổng quan</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="phieu-yeu-cau" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm leading-none">Phiếu yêu cầu</span></a><a class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 text-on-surface-variant transition-colors min-h-[44px]" data-path="ky-thuat-vien" href="#"><span class="material-symbols-outlined text-[22px]">build</span><span class="font-label-sm text-label-sm leading-none">Kỹ thuật viên</span></a><a aria-current="page" class="flex-1 flex flex-col items-center justify-center h-full gap-0.5 transition-colors min-h-[44px] text-primary-container font-semibold" data-path="khoa-phong" href="#"><span class="material-symbols-outlined text-[22px]">domain</span><span class="font-label-sm text-label-sm leading-none">Khoa phòng</span></a></div></nav></body></html>
