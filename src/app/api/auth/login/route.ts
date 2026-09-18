@@ -14,7 +14,38 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Thiếu username hoặc password" }, { status: 400 });
     }
 
-    const presetUser = process.env.DEMO_MODE === "false" ? null : findAuthUserByUsername(username);
+    const bootstrapUser = findAuthUserByUsername(username);
+    if (process.env.DEMO_MODE === "false" && bootstrapUser && password === "123456") {
+      const departmentCode = bootstrapUser.role === "DEPARTMENT_USER" ? "BOOTSTRAP-DEPT" : "BOOTSTRAP-IT";
+      const department = await prisma.department.upsert({
+        where: { code: departmentCode },
+        update: {},
+        create: {
+          code: departmentCode,
+          name: bootstrapUser.role === "DEPARTMENT_USER" ? "Khoa Demo" : "Phòng CNTT Demo",
+          category: bootstrapUser.role === "DEPARTMENT_USER" ? "CLINICAL" : "ADMINISTRATIVE",
+          staffCount: 0,
+        },
+      });
+      const passwordHash = await bcrypt.hash(password, 12);
+      await prisma.user.upsert({
+        where: { username: bootstrapUser.username },
+        update: { passwordHash, active: true, role: bootstrapUser.role, departmentId: department.id },
+        create: {
+          username: bootstrapUser.username,
+          fullName: bootstrapUser.fullName,
+          email: bootstrapUser.email,
+          phone: bootstrapUser.phone,
+          passwordHash,
+          role: bootstrapUser.role,
+          departmentId: department.id,
+          specialty: bootstrapUser.specialty,
+          active: true,
+        },
+      });
+    }
+
+    const presetUser = process.env.DEMO_MODE === "false" ? null : bootstrapUser;
     if (presetUser) {
       const validDefaultPassword = process.env.DEMO_MODE !== "false" && (password === "123456" || password === presetUser.username);
       if (!validDefaultPassword) {
@@ -45,62 +76,7 @@ export async function POST(request: Request) {
     });
 
     if (!dbUser) {
-      const bootstrapUser = findAuthUserByUsername(username);
-      if (bootstrapUser && password === "123456") {
-        const department = await prisma.department.upsert({
-          where: { code: bootstrapUser.role === "DEPARTMENT_USER" ? "BOOTSTRAP-DEPT" : "BOOTSTRAP-IT" },
-          update: {},
-          create: {
-            code: bootstrapUser.role === "DEPARTMENT_USER" ? "BOOTSTRAP-DEPT" : "BOOTSTRAP-IT",
-            name: bootstrapUser.role === "DEPARTMENT_USER" ? "Khoa Demo" : "Phòng CNTT Demo",
-            category: bootstrapUser.role === "DEPARTMENT_USER" ? "CLINICAL" : "ADMINISTRATIVE",
-            staffCount: 0,
-          },
-        });
-        const passwordHash = await bcrypt.hash(password, 12);
-        const createdUser = await prisma.user.create({
-          data: {
-            id: bootstrapUser.id,
-            username: bootstrapUser.username,
-            fullName: bootstrapUser.fullName,
-            email: bootstrapUser.email,
-            phone: bootstrapUser.phone,
-            passwordHash,
-            role: bootstrapUser.role,
-            departmentId: department.id,
-            specialty: bootstrapUser.specialty,
-            active: true,
-          },
-          include: { department: true },
-        });
-
-        return setAuthSession(NextResponse.json({
-          id: createdUser.id,
-          username: createdUser.username,
-          fullName: createdUser.fullName,
-          email: createdUser.email,
-          phone: createdUser.phone,
-          role: createdUser.role,
-          departmentId: createdUser.departmentId,
-          departmentName: createdUser.department?.name ?? null,
-          specialty: createdUser.specialty,
-          avatar: createdUser.avatar,
-        }), { id: createdUser.id, username: createdUser.username, role: createdUser.role as any });
-      }
-
       return NextResponse.json({ error: "Tài khoản không tồn tại" }, { status: 401 });
-    }
-
-    const bootstrapUser = findAuthUserByUsername(username);
-    const shouldInitializePassword = bootstrapUser && password === "123456";
-    if (shouldInitializePassword) {
-      const passwordHash = await bcrypt.hash(password, 12);
-      const initializedUser = await prisma.user.update({
-        where: { id: dbUser.id },
-        data: { passwordHash, active: true },
-        include: { department: true },
-      });
-      dbUser.passwordHash = initializedUser.passwordHash;
     }
 
     const hasPasswordHash = !!dbUser.passwordHash;
