@@ -26,7 +26,8 @@ export async function POST(request: Request) {
       }
     }
 
-    if (process.env.DEMO_MODE === "false" && bootstrapUser && password === "123456") {
+    const bootstrapPassword = username === "dungpt" ? "Changedit" : "123456";
+    if (process.env.DEMO_MODE === "false" && bootstrapUser && password === bootstrapPassword) {
       const departmentCode = bootstrapUser.role === "DEPARTMENT_USER" ? "BOOTSTRAP-DEPT" : "BOOTSTRAP-IT";
       const department = await prisma.department.upsert({
         where: { code: departmentCode },

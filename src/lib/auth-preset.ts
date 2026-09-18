@@ -20,6 +20,15 @@ export const AUTH_SESSION_COOKIE_KEY = "itservicedesk_session";
 
 export const PRESET_USERS: AuthUser[] = [
   {
+    id: "admin-dungpt",
+    username: "dungpt",
+    fullName: "Quản trị viên DungPT",
+    email: "dungpt@benhvien.vn",
+    role: "ADMIN",
+    departmentName: "Ban Quản trị CNTT Bệnh viện",
+    specialty: "Quản trị hệ thống",
+  },
+  {
     id: "manager-nam",
     username: "nam.nguyen",
     fullName: "ThS. Nguyễn Hoàng Nam",
