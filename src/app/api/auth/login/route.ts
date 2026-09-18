@@ -91,6 +91,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Tài khoản không tồn tại" }, { status: 401 });
     }
 
+    const bootstrapUser = findAuthUserByUsername(username);
+    const shouldInitializePassword = bootstrapUser && password === "123456" && !dbUser.passwordHash;
+    if (shouldInitializePassword) {
+      const passwordHash = await bcrypt.hash(password, 12);
+      const initializedUser = await prisma.user.update({
+        where: { id: dbUser.id },
+        data: { passwordHash, active: true },
+        include: { department: true },
+      });
+      dbUser.passwordHash = initializedUser.passwordHash;
+    }
+
     const hasPasswordHash = !!dbUser.passwordHash;
     const validByDefault = process.env.DEMO_MODE !== "false" && (password === "123456" || password === dbUser.username);
     if (!hasPasswordHash && !validByDefault) {
