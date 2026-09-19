@@ -367,6 +367,10 @@ export default function TicketDetailPage() {
   const images = parseJsonList(ticket.images);
   const selectedTech = technicians.find((t) => t.id === selectedTechId);
   const isAssigned = Boolean(ticket.assignment);
+  const hasInvalidAssignment = ticket.assignment?.technician?.role !== "TECHNICIAN";
+  const isWaitingForAcceptance = ticket.currentStep <= 3 && !ticket.taskReport;
+  const canRepairInvalidAssignment = hasInvalidAssignment && isWaitingForAcceptance;
+  const canReassign = !isAssigned || ticket.status === "APPROVED" || isWaitingForAcceptance || canRepairInvalidAssignment;
   const isAssignedToCurrentUser = ticket.assignment?.technicianId === activeUser.id;
   const canStartWork = isTechnician && isAssignedToCurrentUser && ticket.status === "APPROVED";
   const canSubmitReport = isTechnician && isAssignedToCurrentUser && ticket.status === "IN_PROGRESS" && !ticket.taskReport;
@@ -690,10 +694,10 @@ export default function TicketDetailPage() {
         </div>
 
         {/* Action Buttons for Dispatch */}
-        {isAssigned && (
+        {isAssigned && isWaitingForAcceptance && (
           <div className="flex items-center gap-2 rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-xs text-emerald-800">
             <span className="material-symbols-outlined text-[18px]">assignment_turned_in</span>
-            <span>Đã giao cho <strong>{ticket.assignment.technician?.fullName}</strong>. Chờ nhân viên nhận và bắt đầu xử lý.</span>
+            <span>Đã giao cho <strong>{ticket.assignment.technician?.fullName}</strong>. Có thể phân lại cho nhân viên khác trước khi nhận việc.</span>
           </div>
         )}
 
@@ -708,15 +712,15 @@ export default function TicketDetailPage() {
           >
             <button
               onClick={handleDispatch}
-              disabled={dispatching || isAssigned}
+              disabled={dispatching || !canReassign}
               className={`h-12 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md ${
-                isAssigned
+                !canReassign
                   ? "bg-emerald-100 text-emerald-800 cursor-not-allowed shadow-none"
                   : "bg-primary text-on-primary hover:bg-primary/90 active:scale-98 shadow-primary/20"
               }`}
             >
-              <span className="material-symbols-outlined text-[22px]">{isAssigned ? "task_alt" : "check_circle"}</span>
-              <span>{dispatching ? "Đang xử lý..." : isAssigned ? "Đã phân công" : "Phê duyệt & Giao việc ngay"}</span>
+              <span className="material-symbols-outlined text-[22px]">{!canReassign ? "task_alt" : isAssigned ? "swap_horiz" : "check_circle"}</span>
+              <span>{dispatching ? "Đang xử lý..." : !canReassign ? "Đã phân công" : isAssigned ? "Phân công lại" : "Phê duyệt & Giao việc ngay"}</span>
             </button>
           </ActionGuard>
 

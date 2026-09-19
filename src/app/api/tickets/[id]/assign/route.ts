@@ -25,6 +25,48 @@ export async function POST(
       return NextResponse.json({ error: "Technician is required" }, { status: 400 });
     }
 
+    const existingTicket = await prisma.ticket.findUnique({
+      where: { id },
+      select: {
+        status: true,
+        currentStep: true,
+        taskReport: { select: { id: true } },
+        assignment: { select: { technician: { select: { role: true } } } },
+      },
+    });
+
+    if (!existingTicket) {
+      return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
+    }
+
+    const isInvalidAssignment =
+      existingTicket.assignment && existingTicket.assignment.technician.role !== "TECHNICIAN";
+    const isWaitingForAcceptance = existingTicket.currentStep <= 3 && !existingTicket.taskReport;
+    const canRepairInvalidAssignment = isInvalidAssignment && isWaitingForAcceptance;
+
+    // Reassignment is allowed only while the ticket is waiting for the technician
+    // to accept it. An assignment pointing to a non-technician is repairable until
+    // a work report exists, because that account could not have accepted the work.
+    if (
+      existingTicket.status !== "PENDING_APPROVAL" &&
+      existingTicket.status !== "APPROVED" &&
+      !isWaitingForAcceptance &&
+      !canRepairInvalidAssignment
+    ) {
+      return NextResponse.json(
+        { error: "Không thể thay đổi nhân viên sau khi phiếu đã bắt đầu xử lý" },
+        { status: 409 }
+      );
+    }
+
+    const technician = await prisma.user.findUnique({
+      where: { id: technicianId },
+      select: { role: true },
+    });
+    if (technician?.role !== "TECHNICIAN") {
+      return NextResponse.json({ error: "Chỉ được giao việc cho tài khoản kỹ thuật viên" }, { status: 400 });
+    }
+
     const authDbUser = await resolveDbUserFromRequest(request);
 
     // Default assignedById to the actual logged-in manager/admin account from the auth session
@@ -49,6 +91,7 @@ export async function POST(
       update: {
         technicianId,
         assignedById: validAssignedById,
+        assignedDate: new Date(),
         dueDate,
         managerNote,
       },
