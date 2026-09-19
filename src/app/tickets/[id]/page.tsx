@@ -821,19 +821,18 @@ export default function TicketDetailPage() {
               <span className="material-symbols-outlined text-[18px] text-primary">photo_library</span>
               Ảnh minh chứng xử lý
             </label>
-            <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-secondary px-3 py-2 text-[11px] font-bold text-on-secondary shadow-sm hover:bg-secondary/90">
-              <span className="material-symbols-outlined text-[16px]">add_a_photo</span>
-              Chụp / Tải ảnh
-              <input
-                type="file"
-                accept="image/*"
-                capture="environment"
-                multiple
-                className="hidden"
-                onChange={handleProofImagePick}
-                disabled={Boolean(ticket.taskReport)}
-              />
-            </label>
+            <div className="flex flex-wrap justify-end gap-2">
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-3 py-2 text-[11px] font-bold text-on-primary shadow-sm hover:bg-primary/90">
+                <span className="material-symbols-outlined text-[16px]">photo_camera</span>
+                Chụp ảnh
+                <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleProofImagePick} disabled={Boolean(ticket.taskReport)} />
+              </label>
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-secondary px-3 py-2 text-[11px] font-bold text-on-secondary shadow-sm hover:bg-secondary/90">
+                <span className="material-symbols-outlined text-[16px]">upload_file</span>
+                Tải ảnh
+                <input type="file" accept="image/*" multiple className="hidden" onChange={handleProofImagePick} disabled={Boolean(ticket.taskReport)} />
+              </label>
+            </div>
           </div>
 
           {proofImages.length > 0 ? (

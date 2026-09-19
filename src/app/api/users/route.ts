@@ -33,6 +33,26 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { username, fullName, email, phone, role, departmentId, specialty, password } = body;
 
+    const normalizedUsername = String(username || "").trim();
+    const normalizedEmail = String(email || "").trim().toLowerCase();
+    if (!normalizedUsername || !normalizedEmail) {
+      return NextResponse.json({ error: "Username và email là bắt buộc" }, { status: 400 });
+    }
+
+    const duplicateUser = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { username: normalizedUsername },
+          { email: normalizedEmail },
+        ],
+      },
+      select: { username: true, email: true },
+    });
+    if (duplicateUser) {
+      const duplicateField = duplicateUser.username === normalizedUsername ? "Tên đăng nhập" : "Email";
+      return NextResponse.json({ error: `${duplicateField} đã tồn tại` }, { status: 409 });
+    }
+
     if (!password || String(password).length < 6) {
       return NextResponse.json({ error: "Password must be at least 6 characters" }, { status: 400 });
     }
@@ -41,9 +61,9 @@ export async function POST(request: Request) {
 
     const user = await prisma.user.create({
       data: {
-        username,
+        username: normalizedUsername,
         fullName,
-        email,
+        email: normalizedEmail,
         phone,
         role: role || "DEPARTMENT_USER",
         departmentId,
@@ -74,17 +94,32 @@ export async function PUT(request: Request) {
 
   try {
     const body = await request.json();
-    const { id, fullName, email, phone, role, departmentId, specialty, active, password } = body;
+    const { id, username, fullName, email, phone, role, departmentId, specialty, active, password } = body;
 
     if (password && String(password).length < 6) {
       return NextResponse.json({ error: "Password must be at least 6 characters" }, { status: 400 });
     }
 
+    const normalizedUsername = String(username || "").trim();
+    const normalizedEmail = String(email || "").trim().toLowerCase();
+    const duplicateUser = await prisma.user.findFirst({
+      where: {
+        OR: [{ username: normalizedUsername }, { email: normalizedEmail }],
+        NOT: { id },
+      },
+      select: { username: true, email: true },
+    });
+    if (duplicateUser) {
+      const duplicateField = duplicateUser.username === normalizedUsername ? "Tên đăng nhập" : "Email";
+      return NextResponse.json({ error: `${duplicateField} đã tồn tại` }, { status: 409 });
+    }
+
     const user = await prisma.user.update({
       where: { id },
       data: {
+        username: normalizedUsername,
         fullName,
-        email,
+        email: normalizedEmail,
         phone,
         role,
         departmentId,

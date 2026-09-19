@@ -120,7 +120,6 @@ export default function ManagementPage() {
     }
   };
 
-  // Add Dept action
   const handleCreateDept = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newDeptData.code || !newDeptData.name) {
@@ -186,7 +185,8 @@ export default function ManagementPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editingUser),
       });
-      if (!res.ok) throw new Error("Update failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Update failed");
       showToast("Đã lưu", `Đã cập nhật tài khoản ${editingUser.fullName}`);
       setShowEditUserModal(false);
       fetchData();
@@ -972,6 +972,16 @@ export default function ManagementPage() {
 
             <form onSubmit={handleUpdateUser} className="p-5 space-y-3">
               <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-on-surface">Tên đăng nhập *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingUser.username || ""}
+                    onChange={(e) => setEditingUser({ ...editingUser, username: e.target.value })}
+                    className="w-full h-10 px-3 rounded-xl bg-surface-container-low text-on-surface text-sm"
+                  />
+                </div>
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-on-surface">Họ và tên *</label>
                   <input

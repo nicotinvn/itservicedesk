@@ -21,6 +21,11 @@ export default function DashboardPage() {
       return;
     }
 
+    if (isTechnician) {
+      router.replace("/technicians");
+      return;
+    }
+
     fetchData();
   }, [currentUser?.role, isDepartmentUser, router]);
 

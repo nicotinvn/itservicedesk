@@ -536,18 +536,18 @@ export default function TicketsListPage() {
                     <span className="material-symbols-outlined text-[18px] text-primary">photo_camera</span>
                     Ảnh minh chứng sự cố (nếu có)
                   </label>
-                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-3 py-2 text-[11px] font-bold text-on-primary shadow-sm hover:bg-primary/90">
-                    <span className="material-symbols-outlined text-[16px]">add_photo_alternate</span>
-                    Chụp / Tải ảnh
-                    <input
-                      type="file"
-                      accept="image/*"
-                      capture="environment"
-                      multiple
-                      className="hidden"
-                      onChange={handleImagePick}
-                    />
-                  </label>
+                  <div className="flex flex-wrap justify-end gap-2">
+                    <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-3 py-2 text-[11px] font-bold text-on-primary shadow-sm hover:bg-primary/90">
+                      <span className="material-symbols-outlined text-[16px]">photo_camera</span>
+                      Chụp ảnh
+                      <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImagePick} />
+                    </label>
+                    <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-secondary px-3 py-2 text-[11px] font-bold text-on-secondary shadow-sm hover:bg-secondary/90">
+                      <span className="material-symbols-outlined text-[16px]">upload_file</span>
+                      Tải ảnh
+                      <input type="file" accept="image/*" multiple className="hidden" onChange={handleImagePick} />
+                    </label>
+                  </div>
                 </div>
 
                 {attachedImages.length > 0 ? (

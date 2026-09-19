@@ -36,7 +36,6 @@ export const ROLE_PERMISSIONS: Record<UserRole, PermissionAction[]> = {
     "VIEW_REPORTS",
     "EXPORT_REPORTS",
     "MANAGE_KPI",
-    "VIEW_DEPARTMENTS",
     "VIEW_TECHNICIAN_DASHBOARD",
   ],
   TECHNICIAN: [
